@@ -57,18 +57,31 @@ def Myrecommend():
     user_to_column = {}  # Tạo một bản đồ từ tên người dùng sang chỉ số cột
     # Duyệt qua tất cả các người dùng trong dataframe và gán mỗi tên người dùng với một chỉ số cột
     for idx, user_name in enumerate(df['user_name'].unique()):
-    user_to_column[user_name] = idx
+        user_to_column[user_name] = idx
+
+
+    product_to_row = {}  # Tạo một bản đồ từ product_id sang chỉ số hàng
+    # Duyệt qua tất cả các product_id trong dataframe và gán mỗi product_id với một chỉ số hàng
+    for idx, product_id in enumerate(df['product_id'].unique()):
+        product_to_row[product_id] = idx
 
     for row in df.itertuples():
         # Y[row[2] - 1, row[4] - 1] = row[3]
-        Y[int(row[1])-1 ,  user_to_column[row[4]] ] = row[6]
+        if row[1] not in product_to_row or row[4] not in user_to_column.values():
+            print(row[1],row[4])
+            continue  # Bỏ qua các dòng không thể ánh xạ
+        Y[product_to_row[row[1]], user_to_column[row[4]]] = row[6]
 
+    print(user_to_column)
+    print(product_to_row)
+    print(Y )
     R = np.zeros((mynm, mynu))
     for i in range(Y.shape[0]):
         for j in range(Y.shape[1]):
             if Y[i][j] != 0:
                 R[i][j] = 1
 
+    print(R)
     Ynorm, Ymean = normalizeRatings(Y, R)
     X = np.random.rand(mynm, mynf)
     Theta = np.random.rand(mynu, mynf)
@@ -78,4 +91,5 @@ def Myrecommend():
                                     maxiter=40, disp=True, full_output=True)
     resX, resTheta = reshapeParams(result[0], mynm, mynu, mynf)
     prediction_matrix = resX.dot(resTheta.T)
-    return prediction_matrix, Ymean
+    print(prediction_matrix)
+    return prediction_matrix, Ymean ,product_to_row ,user_to_column
