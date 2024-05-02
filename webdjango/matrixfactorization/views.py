@@ -71,21 +71,23 @@ def recommend(request):
 
 
     my_predictions = prediction_matrix[:, int(name)] + Ymean.flatten()
-    
+    print(Ymean.flatten())
     # Sắp xếp dự đoán
+    print(my_predictions)
     pred_idxs_sorted = np.argsort(my_predictions)
     pred_idxs_sorted[:] = pred_idxs_sorted[::-1]
-    pred_idxs_sorted = pred_idxs_sorted + 1
+    pred_idxs_sorted = pred_idxs_sorted +1
 
     preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(pred_idxs_sorted)])
 
     # Lấy các sản phẩm được dự đoán tốt nhất
     recommended_products = Product.objects.filter(id__in=pred_idxs_sorted[:5]).order_by(preserved)
+    print(recommended_products)
 
     context = {
-        'recommended_products': recommended_products,
+        'movie_list': recommended_products,
         'user_id': request.user.id,
     }
-
+    print(Ymean)
     return render(request, 'recommend.html', context)
 

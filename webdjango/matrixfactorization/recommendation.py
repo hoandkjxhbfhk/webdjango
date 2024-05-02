@@ -64,13 +64,16 @@ def Myrecommend():
     # Duyệt qua tất cả các product_id trong dataframe và gán mỗi product_id với một chỉ số hàng
     for idx, product_id in enumerate(df['product_id'].unique()):
         product_to_row[product_id] = idx
-
+    u=''
+    i=''
     for row in df.itertuples():
         # Y[row[2] - 1, row[4] - 1] = row[3]
-        if row[1] not in product_to_row or row[4] not in user_to_column.values():
-            print(row[1],row[4])
-            continue  # Bỏ qua các dòng không thể ánh xạ
-        Y[product_to_row[row[1]], user_to_column[row[4]]] = row[6]
+        # if row[1] not in product_to_row or row[4] not in user_to_column.values():
+        #     print(row[1],row[4])
+        #     continue  # Bỏ qua các dòng không thể ánh xạ
+        u=row[2]
+        i=row[4]
+        Y[product_to_row[row[2]], user_to_column[row[4]]] = row[6]
 
     print(user_to_column)
     print(product_to_row)
@@ -86,10 +89,26 @@ def Myrecommend():
     X = np.random.rand(mynm, mynf)
     Theta = np.random.rand(mynu, mynf)
     myflat = flattenParams(X, Theta)
-    mylambda = 12.2
-    result = scipy.optimize.fmin_cg(cofiCostFunc, x0=myflat, fprime=cofiGrad, args=(Y, R, mynu, mynm, mynf, mylambda),
-                                    maxiter=40, disp=True, full_output=True)
-    resX, resTheta = reshapeParams(result[0], mynm, mynu, mynf)
+    
+    
+    
+    # mylambda = 12.2
+    # result = scipy.optimize.fmin_cg(cofiCostFunc, x0=myflat, fprime=cofiGrad, args=(Y, R, mynu, mynm, mynf, mylambda),
+    #                                 maxiter=40, disp=True, full_output=True)
+    # resX, resTheta = reshapeParams(result[0], mynm, mynu, mynf)
+    # prediction_matrix = resX.dot(resTheta.T)
+    # print(prediction_matrix)
+    # return prediction_matrix, Ymean ,product_to_row ,user_to_column
+    result = scipy.optimize.minimize(
+        fun=cofiCostFunc,
+        x0=myflat,
+        args=(Ynorm, R, mynu, mynm, mynf, 0),
+        method='TNC',
+        jac=cofiGrad,
+        options={'maxiter': 100}
+    )
+
+    resX, resTheta = reshapeParams(result.x, mynm, mynu, mynf)
     prediction_matrix = resX.dot(resTheta.T)
     print(prediction_matrix)
-    return prediction_matrix, Ymean ,product_to_row ,user_to_column
+    return prediction_matrix, Ymean, product_to_row, user_to_column
