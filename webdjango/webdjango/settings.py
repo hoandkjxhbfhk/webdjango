@@ -26,8 +26,11 @@ SECRET_KEY = '+)&mi89-=v@-7o=qvf-kq+v7)9j9@0r%a#*x!h+^o2ne3e6%^$'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-STATICFILES_DIRS =[
-    "/Users/akp/PycharmProjects/webdjango/webdjango/static"
+# STATICFILES_DIRS =[
+#     "/Users/akp/PycharmProjects/webdjango/webdjango/static"
+# ]
+STATICFILES_DIRS = [
+    BASE_DIR +"/static",
 ]
 
 # Application definition
