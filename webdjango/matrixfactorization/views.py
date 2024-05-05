@@ -46,6 +46,7 @@ def recommend(request):
     if not request.user.is_active:
         raise Http404
     df = pd.DataFrame(list(Review.objects.all().values()))
+    print(df)
     nu = df.user_name.unique().shape[0]
     current_user_id = request.user.id
     # if new user not rated any
