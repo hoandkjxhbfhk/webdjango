@@ -16,6 +16,12 @@ from .forms import ReviewForm
 from .suggestions import update_clusters
 from .models import Category, Product, SubCategory, Slider, Review, Cluster
 from profiles.models import Profile
+import pandas as pd 
+import numpy as np 
+import json
+
+from django.utils.text import slugify
+import random
 
 
 def signup(request):
@@ -87,7 +93,8 @@ def index(request, category_slug=None):
     slider = Slider.objects.all()
     #electronics = SubCategory.objects.filter(Q(category_id=1))
     electronics = {}
-    products = Product.objects.filter(available=True).order_by('-created')
+    #products = Product.objects.filter(available=True).order_by('-created')
+    products = Product.objects.filter(available=True)
     paginator = Paginator(products, 3)
     page = request.GET.get('page')
     paged_products = paginator.get_page(page)

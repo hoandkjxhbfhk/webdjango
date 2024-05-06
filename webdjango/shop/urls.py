@@ -66,5 +66,6 @@ urlpatterns = [
     path('review/user/<str:username>/', views.user_review_list, name='user_review_list'),
     path('review/user/', views.user_review_list, name='user_review_list'),
     path('recommendation/', views.user_recommendation_list, name='user_recommendation_list'),
+
     ]
 

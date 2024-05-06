@@ -59,18 +59,23 @@ class Product(models.Model):
     subCategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.CharField(max_length=200, db_index=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True,max_length=255)
     description = models.TextField(blank=True)
     price = models.PositiveIntegerField()
     discount_price = models.FloatField(blank=True, null=True)
     # pub_date = models.DateField()
-    stock = models.PositiveIntegerField()
+    stock = models.PositiveIntegerField(default=100)
     available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now_add=True)
+    # created = models.DateTimeField(auto_now_add=True)
+    # updated = models.DateTimeField(auto_now_add=True)
+
+    def __init__(self, *args, **kwargs):
+        super(Product, self).__init__(*args, **kwargs)
+        if self.price:
+            self.discount_price = self.price * 0.9
 
     class Meta:
-        ordering = ('-created',)
+        #ordering = ('-created',)
         index_together = (('id', 'slug'),)
 
     def average_rating(self):
