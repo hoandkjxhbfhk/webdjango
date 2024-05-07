@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-md-6">
                     {% if profile.avatar %}
-                        <img src="{{ MEDIA_URL }}{{ profile.avatar }}" alt="{{ profile.first_name }} {{ profile.last_name }}">
+                        <img src="{{ MEDIA_URL }}{{ profile.avatar.url }}" alt="{{ profile.first_name }} {{ profile.last_name }}">
                     {% endif %}
                 </div>
                 <div class="col-md-6">
