@@ -50,12 +50,12 @@ urlpatterns = [
     path('about/', views.about, name="about"),
     path('', include('django.contrib.auth.urls')),
     #path('oauth/', include('social_django.urls', namespace="social")),
-    path('product_list_category/', views.product_list_category, name="list"),
+    path('product_list_category/', views.index, name="list"),
     path('', views.index, name="index"),
     path('product_list', views.index, name='product_list'),
     path('search/', views.search_list, name='query'),
     #path('trending/', views.search_list, name ='query'),
-    path('<slug:category_slug>/', views.product_list_category, name='product_list_by_category'),
+    path('<slug:category_slug>/', views.index, name='product_list_by_category'),
     path('<int:id>/<slug:slug>/', views.product_detail, name='product_detail'),
     path('cat/<slug:subcategory_slug>/', views.product_list_subcategory, name='product_list_by_subcategory'),
     path('reviewlist/', views.review_list, name='review_list'),
@@ -66,6 +66,6 @@ urlpatterns = [
     path('review/user/<str:username>/', views.user_review_list, name='user_review_list'),
     path('review/user/', views.user_review_list, name='user_review_list'),
     path('recommendation/', views.user_recommendation_list, name='user_recommendation_list'),
-
+    
     ]
 

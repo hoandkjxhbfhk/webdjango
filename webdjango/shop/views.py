@@ -87,29 +87,32 @@ def user_logout(request):
     return redirect("shop:index")
 
 
+
+
 def index(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     slider = Slider.objects.all()
-    #electronics = SubCategory.objects.filter(Q(category_id=1))
-    electronics = {}
-    #products = Product.objects.filter(available=True).order_by('-created')
-    products = Product.objects.filter(available=True)
-    paginator = Paginator(products, 3)
-    page = request.GET.get('page')
-    paged_products = paginator.get_page(page)
-    product_list = Product.objects.order_by('-name')
+    products = Product.objects.filter(available=True).order_by('-name')
 
     if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    return render(request, 'index.html', {'category': category,
-                                               'categories': categories,
-                                               'slider': slider,
-                                               'electronics': electronics,
-                                               'product_list': product_list,
-                                               'products': paged_products})
+       category = get_object_or_404(Category, slug=category_slug)
+       products = products.filter(category=category)  # Filter first
 
+    paginator = Paginator(products, 20)  # Paginate the filtered set
+    page = request.GET.get('page')
+    paged_products = paginator.get_page(page)
+
+    context = {
+        'category': category,
+        'categories': categories,
+        'slider': slider,
+        'electronics': {},
+        'product_list': products,
+        'products': paged_products  # Pass the paginated results
+    }
+
+    return render(request, 'index.html', context) 
 
 def about(request, category_slug=None):
     category = None
@@ -123,19 +126,6 @@ def about(request, category_slug=None):
                                           'products': products})
 
 
-def product_list_category(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    product_list = Product.objects.order_by('-name')
-    products = Product.objects.filter(available=True)
-    # if category_slug:
-    #     category = get_object_or_404(Category, slug=category_slug)
-    #     print(category)
-    #     products = products.filter(category=category)
-    return render(request, 'list.html', {'category': category,
-                                              'categories': categories,
-                                              'products': products,
-                                              'product_list': product_list})
 
 
 def search_list(request):
@@ -265,8 +255,8 @@ def user_recommendation_list(request):
 
     return render(
         request,
-        'user_recommendation_list.html',
-        {'username': request.user.username, 'product_list': product_list}
+        'recommend.html',
+        {'username': request.user.username, 'movie_list': product_list}
     )
 
 

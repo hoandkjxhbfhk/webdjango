@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>AllBachelor- Shop</title>
+	<title> Shop</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -336,11 +336,11 @@
 
                         <li class="text-center border-right text-white"><a href="#" class="text-white">	<i class="fas fa-language mr-2"></i> the_Middles</a></li>
 						<li class="text-center border-right text-white">
-							<a href="/checkout" class="text-white"><i class="fas fa-truck mr-2"></i> bla bla</a>
+							<a href="/checkout" class="text-white"><i class="fas fa-truck mr-2"></i> Vận Chuyển</a>
 						</li>
 						<li class="text-center border-right text-white">
 							<a href="{% url 'order:orderindex' %}" class="text-white">
-								<i class="fas fa-phone mr-2"></i>My order</a></li>
+								<i class="fas fa-phone mr-2"></i> Đơn Hàng</a></li>
 						{% if request.user.is_authenticated %}
 						<li class="text-center border-right text-white">
 
@@ -349,16 +349,16 @@
 						</li>
 						<li class="text-center  boarder-right text-white">
 							<a href="{% url 'shop:logout' %}"  class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Log out </a>
+								<i class="fas fa-sign-out-alt mr-2"></i> Đăng Xuất </a>
 						</li>
 						{% else %}
 						<li class="text-center border-right text-white">
 							<a href="{% url 'shop:login' %}"  class="text-white">
-								<i class="fas fa-sign-in-alt mr-2"></i> Sign in </a>
+								<i class="fas fa-sign-in-alt mr-2"></i> Đăng Nhập </a>
 						</li>
 						<li class="text-center  boarder-right text-white">
 							<a href="{% url 'shop:signup' %}"  class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Sign up</a>
+								<i class="fas fa-sign-out-alt mr-2"></i> Đăng Ký </a>
 						</li>
 					{% endif %}
 					</ul>
