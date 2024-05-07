@@ -50,3 +50,5 @@ def recommend(item_id, num, results):
 
 
 connection.close()
+
+
