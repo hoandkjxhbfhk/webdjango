@@ -1,13 +1,11 @@
 from django.test import TestCase
 
-
 """
 from django.test import TestCase
 from .models import Wine, Review, Cluster
 from django.contrib.auth.models import User
 
 class YourAppNameTestCase(TestCase):
-    
     def setUp(self):
         # Tạo các đối tượng cho các bài kiểm tra
         self.user1 = User.objects.create(username='user1')

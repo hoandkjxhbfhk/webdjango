@@ -2,8 +2,7 @@ from django.apps import AppConfig
 
 
 class ReviewsConfig(AppConfig):
-    name = 'reviews'
-
+    name = "reviews"
 
 
 """
@@ -18,7 +17,7 @@ class ReviewsConfig(AppConfig):
         post_migrate.connect(my_post_migrate_handler, sender=self)
 
 def my_post_migrate_handler(sender, **kwargs):
-    
+
     # Thêm bất kỳ hành động nào bạn muốn thực hiện ở đây
     pass
 

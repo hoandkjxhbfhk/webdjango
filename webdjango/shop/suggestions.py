@@ -1,9 +1,9 @@
-from django.contrib.auth.models import User
-from sklearn.cluster import KMeans
-from scipy.sparse import dok_matrix, csr_matrix
 import numpy as np
+from django.contrib.auth.models import User
+from scipy.sparse import csr_matrix, dok_matrix
+from sklearn.cluster import KMeans
 
-from .models import Review, Cluster
+from .models import Cluster, Review
 
 
 def update_clusters(is_new_user):
