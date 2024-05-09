@@ -2,10 +2,6 @@ import numpy as np
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from django.utils import timezone
-from django.utils.safestring import mark_safe
-from django.utils.text import slugify
-from Lib.enum import auto
 
 ADDRESS_CHOICES = (
     ("B", "Billing"),

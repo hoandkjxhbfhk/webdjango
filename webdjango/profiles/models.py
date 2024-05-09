@@ -3,7 +3,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-from Lib.enum import auto
 
 # profile info
 

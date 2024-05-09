@@ -104,28 +104,20 @@ WSGI_APPLICATION = "webdjango.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "django",
-        "USER": "root",
-        "PASSWORD": "ocnek123",
-        "HOST": "localhost",
-        "PORT": "3306",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': os.path.join(BASE_DIR, 'database.cnf'),
-#         },
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "django",
+#         "USER": "root",
+#         "PASSWORD": "ocnek123",
+#         "HOST": "localhost",
+#         "PORT": "3306",
 #     }
 # }
 

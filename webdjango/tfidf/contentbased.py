@@ -1,8 +1,5 @@
-import time
-
-import numpy as np
 import pandas as pd
-import pymysql
+from shop.models import Product
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
@@ -15,8 +12,7 @@ from sklearn.metrics.pairwise import linear_kernel
 # # Sử dụng Pandas để đọc dữ liệu từ đối tượng kết nối
 # ds = pd.read_sql_query("SELECT * from shop_product", engine)
 
-connection = pymysql.connect(host="localhost", user="root", password="ocnek123", database="django")
-ds = pd.read_sql_query("SELECT * from shop_product", connection)
+ds = Product.objects.all()
 
 
 def getFrames(ds):
@@ -46,6 +42,3 @@ def recommend(item_id, num, results):
         ids.append(value)
     df = ds[ds["id"].isin(ids)]
     return df
-
-
-connection.close()
