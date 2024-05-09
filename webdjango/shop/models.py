@@ -56,7 +56,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.CharField(max_length=200, db_index=True)
     image = models.ImageField(upload_to="products/%Y/%m/%d", blank=True, max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True,null=True)
     price = models.PositiveIntegerField()
     discount_price = models.FloatField(blank=True, null=True)
     # pub_date = models.DateField()

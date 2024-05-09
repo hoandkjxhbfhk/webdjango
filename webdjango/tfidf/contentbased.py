@@ -12,19 +12,19 @@ from sklearn.metrics.pairwise import linear_kernel
 # # Sử dụng Pandas để đọc dữ liệu từ đối tượng kết nối
 # ds = pd.read_sql_query("SELECT * from shop_product", engine)
 
-ds = Product.objects.all()
+#ds = Product.objects.all()
 
 
 def getFrames(ds):
     tf = TfidfVectorizer(analyzer="word", ngram_range=(1, 5), min_df=0, stop_words="english")
-    tfidf_matrix = tf.fit_transform(ds["name"])
-
+    tfidf_matrix = tf.fit_transform(ds[["name","category",]])
+    print(tfidf_matrix)
     cosine_similarities = linear_kernel(tfidf_matrix, tfidf_matrix)
     results = {}
-
+    print(cosine_similarities)
     for idx, row in ds.iterrows():
         similar_indices = cosine_similarities[idx].argsort()[:-100:-1]
-        similar_items = [(cosine_similarities[idx][i], ds["id"][i]) for i in similar_indices]
+        similar_items = [(cosine_similarities[idx][i], ds[i]) for i in similar_indices]
 
         results[row["id"]] = similar_items[1:]
     return results
