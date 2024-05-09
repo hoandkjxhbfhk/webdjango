@@ -1,6 +1,8 @@
-from django.db import models
 import numpy as np
 from django.contrib.auth.models import User
+from django.db import models
+
+
 class Wine(models.Model):
     name = models.CharField(max_length=200)
 
@@ -10,19 +12,23 @@ class Wine(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
 class Review(models.Model):
-    RATING_CHOICES=(
-        (1,'1'),
-        (2,'2'),
-        (3,'3'),
-        (4,'4'),
-        (5,'5'),
+    RATING_CHOICES = (
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5"),
     )
-    wine = models.ForeignKey(Wine,on_delete = models.DO_NOTHING)
-    pub_date = models.DateTimeField('date published')
+    wine = models.ForeignKey(Wine, on_delete=models.DO_NOTHING)
+    pub_date = models.DateTimeField("date published")
     user_name = models.CharField(max_length=100)
     comment = models.CharField(max_length=200)
     rating = models.IntegerField(choices=RATING_CHOICES)
+
+
 class Cluster(models.Model):
     name = models.CharField(max_length=100)
     users = models.ManyToManyField(User)
@@ -31,7 +37,7 @@ class Cluster(models.Model):
         return "\n".join([u.username for u in self.users.all()])
 
 
-""" 
+"""
 # Trong model Wine
 def __str__(self):
     return self.name

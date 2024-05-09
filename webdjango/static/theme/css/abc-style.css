@@ -17,16 +17,16 @@ ul.sprite li .chemistry { width:145px; height:72px; cursor:pointer; }
 @media (min-width:568px)and (max-width: 767px) {
 ul.sprite{ margin:0px auto; padding:0px; }
 .usrprc { width:44%; height:28px; float:left; margin:0px 0px 0px 0px;  }
-} 
-@media (min-width:415px) and (max-width: 567px) {  
+}
+@media (min-width:415px) and (max-width: 567px) {
 ul.sprite { margin:5px 2px!important; padding: 0px; width: 100%; }
 }
-@media (min-width:321px) and (max-width: 414px) { 
+@media (min-width:321px) and (max-width: 414px) {
 ul.sprite { margin:5px 0px!important; padding: 0px; width: 100%; }
-ul.sprite li { margin:6px 3px!important; padding:6px 0px!important; list-style:none; border: 1px solid #d6d6d6; width:160px; height:86px; float:left!important; } 
+ul.sprite li { margin:6px 3px!important; padding:6px 0px!important; list-style:none; border: 1px solid #d6d6d6; width:160px; height:86px; float:left!important; }
 }
 @media (min-width:240px) and (max-width: 320px) {
 ul.sprite{ margin:0px auto!important; padding:0px; width:55%!important; }
- ul.sprite li { margin:6px 50pxpx!important; padding:6px 0px!important; list-style:none; border: 1px solid #d6d6d6; width:165px; height:86px; float:left!important; } 
+ ul.sprite li { margin:6px 50pxpx!important; padding:6px 0px!important; list-style:none; border: 1px solid #d6d6d6; width:165px; height:86px; float:left!important; }
 
 /* end of css for menu styling in responsive */

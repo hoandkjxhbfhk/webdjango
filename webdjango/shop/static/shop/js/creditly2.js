@@ -16,9 +16,9 @@ var Creditly2 = (function() {
   // Backspace, delete, tab, escape, enter, ., Ctrl+a, Ctrl+c, Ctrl+v, home, end, left, right
   var isEscapedKeyStroke = function(e) {
     return ( $.inArray(e.which,[46,8,9,0,27,13,190]) !== -1 ||
-      (e.which == 65 && e.ctrlKey === true) || 
-      (e.which == 67 && e.ctrlKey === true) || 
-      (e.which == 86 && e.ctrlKey === true) || 
+      (e.which == 65 && e.ctrlKey === true) ||
+      (e.which == 67 && e.ctrlKey === true) ||
+      (e.which == 86 && e.ctrlKey === true) ||
       (e.which >= 35 && e.which <= 39));
   };
 
@@ -165,7 +165,7 @@ var Creditly2 = (function() {
       };
 
       var isValidSecurityCode = function(isAmericanExpress, securityCode) {
-        if ((isAmericanExpress && securityCode.length == 4) || 
+        if ((isAmericanExpress && securityCode.length == 4) ||
             (!isAmericanExpress && securityCode.length == 3)) {
           return true;
         }

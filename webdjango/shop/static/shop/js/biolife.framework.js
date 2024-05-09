@@ -129,8 +129,8 @@
 		        }
 		    },
 
-		    add_string_prefix: function(str, prefix) { 
-		    	return prefix + str; 
+		    add_string_prefix: function(str, prefix) {
+		    	return prefix + str;
 		    },
 
 		    wrap_container: function(){
@@ -406,27 +406,5 @@
     };
 
     $.fn.biolife_sidebar_handle();
-    
+
 }( jQuery ));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-   

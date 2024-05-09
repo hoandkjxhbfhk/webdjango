@@ -1,11 +1,11 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Order, ShopCart, OrderDetail
+from .models import Order, OrderDetail, ShopCart
 
 
 class ShopCartAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'quantity')
+    list_display = ("user", "product", "quantity")
 
 
 class DetailInline(admin.TabularInline):
@@ -13,15 +13,15 @@ class DetailInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'name', 'surname', 'city', 'phone', 'total', 'status')
-    list_filter = ('status', 'create_at')
-    readonly_fields = ('name', 'surname', 'address', 'city', 'phone', 'total', 'user')
+    list_display = ("user", "name", "surname", "city", "phone", "total", "status")
+    list_filter = ("status", "create_at")
+    readonly_fields = ("name", "surname", "address", "city", "phone", "total", "user")
     # inlines = [DetailInline]
 
 
 class OrderDetailAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'price', 'total', 'update_at')
-    readonly_fields = ('product', 'price', 'total')
+    list_display = ("user", "product", "price", "total", "update_at")
+    readonly_fields = ("product", "price", "total")
 
 
 admin.site.register(Order)

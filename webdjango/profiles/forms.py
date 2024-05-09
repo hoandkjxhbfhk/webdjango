@@ -1,19 +1,20 @@
-
-from django.forms import ModelForm, Textarea
-
+from django import forms
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.hashers import check_password
-from zxcvbn_password.fields import PasswordField, PasswordConfirmationField
-from markdownx.fields import MarkdownxFormField
-from django import forms
-from .models import Profile
 from django.core.validators import MinLengthValidator
+from django.forms import ModelForm, Textarea
+from markdownx.fields import MarkdownxFormField
 from PIL import Image
+from zxcvbn_password.fields import PasswordConfirmationField, PasswordField
 
-app_name = 'profiles'
+from .models import Profile
+
+app_name = "profiles"
+
 
 class ProfileForm(forms.ModelForm):
     """Profile Form + Fields for Photo Processing"""
+
     x = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -23,44 +24,44 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
-            'first_name',
-            'last_name',
-            'email',
-            'email_verify',
-            'date_of_birth',
-            'bio',
-            'city',
-            'district',
-            'country_of_residence',
-            'hobby',
-            'avatar',
-            'x',
-            'y',
-            'width',
-            'height',
+            "first_name",
+            "last_name",
+            "email",
+            "email_verify",
+            "date_of_birth",
+            "bio",
+            "city",
+            "district",
+            "country_of_residence",
+            "hobby",
+            "avatar",
+            "x",
+            "y",
+            "width",
+            "height",
         ]
         widgets = {
             # default date-format %m/%d/%Y will be used
-            'date_of_birth': forms.DateInput(attrs={'type': 'date'}),
+            "date_of_birth": forms.DateInput(attrs={"type": "date"}),
         }
 
     def clean(self):
         """Clean the whole form"""
         cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        verify = cleaned_data.get('email_verify')
+        email = cleaned_data.get("email")
+        verify = cleaned_data.get("email_verify")
 
         if email != verify:
-            raise forms.ValidationError('Emails do not match')
+            raise forms.ValidationError("Emails do not match")
 
     def save(self):
         """Override the Save method for saving the crop photo"""
         photo = super().save()
 
-        x = self.cleaned_data.get('x')
-        y = self.cleaned_data.get('y')
-        w = self.cleaned_data.get('width')
-        h = self.cleaned_data.get('height')
+        x = self.cleaned_data.get("x")
+        y = self.cleaned_data.get("y")
+        w = self.cleaned_data.get("width")
+        h = self.cleaned_data.get("height")
 
         if x is not None:
             image = Image.open(photo.avatar)
@@ -75,6 +76,7 @@ class CustomChangePasswordForm(PasswordChangeForm):
     Overriding help_text
 
     """
+
     new_password1 = PasswordField()
     new_password2 = PasswordConfirmationField(confirm_with="new_password1")
 
@@ -103,9 +105,9 @@ class CustomChangePasswordForm(PasswordChangeForm):
 
     class Meta:
         fields = [
-            'old_password',
-            'new_password1',
-            'new_password2',
+            "old_password",
+            "new_password1",
+            "new_password2",
         ]
 
     def clean(self):
@@ -113,21 +115,18 @@ class CustomChangePasswordForm(PasswordChangeForm):
         error if other validation fails
         """
         cleaned_data = super().clean()
-        new_password1 = cleaned_data.get('new_password1')
-        new_password2 = cleaned_data.get('new_password2')
+        new_password1 = cleaned_data.get("new_password1")
+        new_password2 = cleaned_data.get("new_password2")
 
         if new_password1 != new_password2:
-            raise forms.ValidationError('Your new password and '
-                                        'confirmation do not match')
+            raise forms.ValidationError("Your new password and " "confirmation do not match")
 
     def clean_new_password1(self):
         """Validating the Password1 Field"""
-        new_password1 = self.cleaned_data.get('new_password1')
-        new_password2 = self.cleaned_data.get('new_password2')
+        new_password1 = self.cleaned_data.get("new_password1")
 
         if check_password(new_password1, self.user.password):
-            raise forms.ValidationError('Your password must not be '
-                                        'the same as the current password')
+            raise forms.ValidationError("Your password must not be " "the same as the current password")
 
         characters = set(new_password1)
 
@@ -136,16 +135,13 @@ class CustomChangePasswordForm(PasswordChangeForm):
         digit = any(letter.isdigit() for letter in characters)
 
         if not upper:
-            raise forms.ValidationError('Your password must use of '
-                                        'both uppercase and lowercase letters')
+            raise forms.ValidationError("Your password must use of " "both uppercase and lowercase letters")
 
         if not lower:
-            raise forms.ValidationError('Your password must use of '
-                                        'both uppercase and lowercase letters')
+            raise forms.ValidationError("Your password must use of " "both uppercase and lowercase letters")
 
         if not digit:
-            raise forms.ValidationError('Your password must include '
-                                        'of one or more numerical digits')
+            raise forms.ValidationError("Your password must include " "of one or more numerical digits")
 
         special_characters = ["@", "#", "$"]
         check = False
@@ -154,20 +150,15 @@ class CustomChangePasswordForm(PasswordChangeForm):
                 check = True
 
         if not check:
-            raise forms.ValidationError('Your password must include of '
-                                        'special characters, such as @, #, $')
+            raise forms.ValidationError("Your password must include of " "special characters, such as @, #, $")
 
         first_name = self.user.profile.first_name.lower()
         last_name = self.user.profile.last_name.lower()
 
         if first_name in new_password1.lower():
-            raise forms.ValidationError('Your password cannot be too '
-                                        'similar to your other personal '
-                                        'information')
+            raise forms.ValidationError("Your password cannot be too " "similar to your other personal " "information")
 
         if last_name in new_password1.lower():
-            raise forms.ValidationError('Your password cannot be too '
-                                        'similar to your other personal '
-                                        'information')
+            raise forms.ValidationError("Your password cannot be too " "similar to your other personal " "information")
 
         return new_password1

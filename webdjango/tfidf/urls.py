@@ -14,20 +14,18 @@
 #     url(r'^cosrecommendations/', views.get_suggestions, name='cosrecommendation'),
 # ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-from django.contrib import admin
-from django.urls import path
-from django.urls import include
-from . import views
-
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
 
-app_name = 'tfidf'
+from . import views
+
+app_name = "tfidf"
 
 urlpatterns = [
-    path('recommendations/', views.recommendation, name='recommendation'),
-    path('detail/<int:id>/', views.detail, name='detail'),
-    path('home/', views.post_list, name='home'),
-    path('cosrecommendations/', views.get_suggestions, name='cosrecommendation'),
+    path("recommendations/", views.recommendation, name="recommendation"),
+    path("detail/<int:id>/", views.detail, name="detail"),
+    path("home/", views.post_list, name="home"),
+    path("cosrecommendations/", views.get_suggestions, name="cosrecommendation"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
