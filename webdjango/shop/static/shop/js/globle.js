@@ -1,7 +1,7 @@
   $(document).ready(function() {
-     
+
       var owl = $("#fashion-product");
-     
+
       owl.owlCarousel({
           items : 7, //10 items above 1000px browser width
           itemsDesktop : [1000,5], //5 items between 1000px and 901px
@@ -11,7 +11,7 @@
 		  pagination: false,
       autoPlay:true,
       });
-     
+
       // Custom Navigation Events
       $(".product_next").click(function(){
         owl.trigger('owl.next');
@@ -25,7 +25,7 @@
       $(".product_stop").click(function(){
         owl.trigger('owl.stop');
       })
-     
+
     });
 
 /* feature product */
@@ -45,7 +45,7 @@
       })
       $(".featured_prev").click(function(){
         owl.trigger('owl.prev');
-      })    
+      })
     });
 
 /* feature product */
@@ -97,10 +97,3 @@ $(document).ready(function() {
         owl.trigger('owl.prev');
       })
     });
-
-  
-  
-
-
-
-    

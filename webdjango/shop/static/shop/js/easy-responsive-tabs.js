@@ -11,7 +11,7 @@
                 activate: function(){}
             }
             //Variables
-            var options = $.extend(defaults, options);            
+            var options = $.extend(defaults, options);
             var opt = options, jtype = opt.type, jfit = opt.fit, jwidth = opt.width, vtabs = 'vertical', accord = 'accordion';
 
             //Events
@@ -68,8 +68,8 @@
                     $tabItem.attr('aria-controls', 'tab_item-' + (count));
                     $tabItem.attr('role', 'tab');
 
-                    //First active tab, keep closed if option = 'closed' or option is 'accordion' and the element is in accordion mode 
-                    if(options.closed !== true && !(options.closed === 'accordion' && !$respTabsList.is(':visible')) && !(options.closed === 'tabs' && $respTabsList.is(':visible'))) {                  
+                    //First active tab, keep closed if option = 'closed' or option is 'accordion' and the element is in accordion mode
+                    if(options.closed !== true && !(options.closed === 'accordion' && !$respTabsList.is(':visible')) && !(options.closed === 'tabs' && $respTabsList.is(':visible'))) {
                         $respTabs.find('.resp-tab-item').first().addClass('resp-tab-active');
                         $respTabs.find('.resp-accordion').first().addClass('resp-tab-active');
                         $respTabs.find('.resp-tab-content').first().addClass('resp-tab-content-active').attr('style', 'display:block');
@@ -112,7 +112,7 @@
                         //Trigger tab activation event
                         $currentTab.trigger('tabactivate', $currentTab);
                     });
-                    //Window resize function                   
+                    //Window resize function
                     $(window).resize(function () {
                         $respTabs.find('.resp-accordion-closed').removeAttr('style');
                     });

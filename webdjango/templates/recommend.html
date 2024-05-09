@@ -8,7 +8,7 @@
 
 
 	<div class="container">
-    
+
     <!-- Movie list -->
     <div class="gallery">
             {% if movie_list %}
@@ -25,14 +25,14 @@
                             <!-- View Details -->
                             <a href="{% url 'shop:product_detail' product_id=movie.id %}" class="btn btn-primary btn-sm" role="button">Give Rating</a>
 
-                                        
+
                         </div>
                     </div>
                 </div>
                 {% endfor %}
                 {% endif %}
         </div>
-    
+
 </div>
 
 {% endblock %}
