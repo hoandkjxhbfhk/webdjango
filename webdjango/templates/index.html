@@ -528,11 +528,11 @@
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
 							<p>{{slid.name}}
-								<span>40%</span> Discount</p>
-							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Today
+								<span>40%</span> DISCOUNT </p>
+							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"> Hôm nay
 								<span>{{slid.description}}</span>
 							</h3>
-							<a class="button2" href="">Shop Now </a>
+							<a class="button2" href=""> Mua sắm ngay </a>
 						</div>
 					</div>
 				</div>
@@ -552,7 +552,7 @@
    <div class="container">
   <div class="row" id="slider-text">
     <div class="col-md-6">
-      <h2>ALL CATEGORIES</h2>
+      <h2> Danh Mục </h2>
     </div>
   </div>
   </div>
@@ -589,7 +589,7 @@
     <div class="container">
   <div class="row" id="slider-text">
     <div class="col-md-6">
-      <h2><b>ALL PRODUCTS</b></h2>
+      <h2><b>Các sản phẩm hiện có </b></h2>
     </div>
   </div>
 
@@ -607,17 +607,18 @@
                         <img class="pic-2" src="{{ product.image.url }}">
                     </a>
                     <ul class="social">
-                        <li><a href="#" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="{% url 'shop:product_detail' product.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
                         <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+						
                     </ul>
-                    <a class="add-to-cart" href="">Add to cart</a>
+                    <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
                 </div>
                 <div class="product-content">
                     <h3 class="title"><a href="{% url 'shop:product_detail' product.id %}">{{ product.name }}
         </a></h3>
-					<h3 class="title">{{ product.review_set.count }} reviews</h3>
-					<h3 class="title">{{ product.average_rating | floatformat }} average rating</h3>
+					<h3 class="title">{{ product.review_set.count }} Reviews</h3>
+					<h3 class="title">{{ product.average_rating | floatformat }} Average Rating</h3>
                     <span class="price">{{product.price}}</span>
                 </div>
             </div>
@@ -631,7 +632,7 @@
 
 </div>
 
-	<div class="row" style="center">
+	<div class="row justify-content-center" style="center">
 		<div class="col-md-10">
         {% if products.has_other_pages %}
 			<ul class="pagination">
@@ -644,17 +645,17 @@
 				<a class="page-link"> &laquo;</a>
 				</li>
 				{% endif %}
-				{% for i in products.paginator.page_range %}
-				  {% if products.number == i %}
-				   <li class="page-item active">
-					<a class ="page-link">{{i}}</a>
-				</li>
-				{% else %}
-				<li class="page-item">
-					<a class ="page-link" href="?page={{i}}">{{i}}</a>
-				</li>
-				  {% endif %}
-				{% endfor %}
+				{% for i in page_range %}
+    {% if products.number == i %}
+        <li class="page-item active">
+            <a class="page-link">{{ i }}</a>
+        </li>
+    {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+    {% endif %}
+{% endfor %}
 				{% if products.has_next %}
 				<li class="page-item">
 					<a class ="page-link" href="?page={{products.next_page_number}}">&raquo;</a>
