@@ -10,7 +10,7 @@
 
     <!-- BREADCRUMB -->
 <div id="demo">
-  <center><h1>My orders</h1></center>
+  <center><h1> Đơn hàng của bạn </h1></center>
 
 
   <!-- Responsive table starts here -->
@@ -21,13 +21,13 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Full Name</th>
-          <th>Date</th>
-          <th>mobile number</th>
-            <th>city</th>
-            <th>Total</th>
-            <th>status</th>
-            <th>detail</th>
+          <th> Họ và tên </th>
+          <th> Ngày tạo </th>
+          <th> Số điện thoại </th>
+            <th> Tỉnh </th>
+            <th> Thành tiền </th>
+            <th> Trạng thái đơn hàng </th>
+            <th> Chi tiết </th>
         </tr>
       </thead>
       <tbody>
@@ -38,10 +38,10 @@
             <td>{{rs.create_at}}</td>
             <td>{{ rs.phone }}</td>
             <td>{{ rs.city }}</td>
-            <td>Rs. {{ rs.total }}</td>
+            <td>{{ rs.total }} VND </td>
             <td>{{ rs.status }}</td>
           <td data-title="Link">
-            <a href="/order/detail/{{ rs.id }}" target="_blank">Detail</a>
+            <a href="/order/detail/{{ rs.id }}" target="_blank">Chi tiết </a>
           </td>
 
 {% endfor %}

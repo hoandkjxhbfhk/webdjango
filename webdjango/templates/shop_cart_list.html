@@ -9,7 +9,7 @@
     <div class="wrap cf">
   <div class="heading cf">
     <h1>My Cart</h1>
-    <a href="{% url 'shop:index' %}" class="continue">Continue Shopping</a>
+    <a href="{% url 'shop:index' %}" class="continue"> Tiếp tục mua sắm </a>
   </div>
   <div class="cart">
     <ul class="cartWrap">
@@ -18,15 +18,15 @@
     <div class="infoWrap">
         <div class="cartSection">
         <img src="{{rs.product.image.url}}" alt="" class="itemImg" />
-          <p class="itemNumber">#QUE-007544-002</p>
+          <p class="itemNumber">  </p>
           <h3>{{rs.product.name}}</h3>
 
-           <p> <input type="text"  class="qty" placeholder="{{rs.quantity}}"/>  X <del>Rs.{{rs.product.price}}</del> Rs.{{ rs.product.discount_price }}</p>
+           <p> <input type="text"  class="qty" placeholder="{{rs.quantity}}"/>   <del>{{rs.product.price}}</del> {{ rs.product.discount_price }} VND </p>
 
         </div>
 
         <div class="prodTotal cartSection">
-          <p class="stockStatus">= Rs. {{ rs.amount }}</p>
+          <p class="stockStatus">= {{ rs.amount }} VND </p>
         </div>
               <div class="cartSection removeWrap">
            <a href="/order/deletefromcart/{{ rs.id }}" class="remove">x</a>
@@ -39,18 +39,18 @@
     </ul>
   </div>
 
-  <div class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
+  <div class="promoCode"><label for="promo"> Nhập mã để được giảm 90% </label><input type="text" name="promo" placholder="Enter Code" />
   <a href="#" class="btn"></a></div>
 
   <div class="subtotal cf">
     <ul>
-      <li class="totalRow"><span class="label">Subtotal</span><span class="value">Rs. {{ carttotal }}</span></li>
+      <li class="totalRow"><span class="label">Subtotal</span><span class="value">{{ carttotal }} </span></li>
 
-          <li class="totalRow"><span class="label">Shipping</span><span class="value">Free Shipping</span></li>
+          <li class="totalRow"><span class="label"> Phí vận chuyển </span><span class="value">Free</span></li>
 
-            <li class="totalRow"><span class="label">Tax</span><span class="value">{{carttax}}</span></li>
-            <li class="totalRow final"><span class="label">Total</span><span class="value">{{cartwithtax }}</span></li>
-      <li class="totalRow"><a href="/order/checkout" class="btn continue">Checkout</a></li>
+            <li class="totalRow"><span class="label"> Thuế </span><span class="value">{{carttax}}</span></li>
+            <li class="totalRow final"><span class="label"> Tổng thanh toán </span><span class="value">{{cartwithtax }}</span></li>
+      <li class="totalRow"><a href="/order/checkout" class="btn continue"> Thanh Toán </a></li>
     </ul>
   </div>
 </div>
