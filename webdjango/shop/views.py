@@ -86,7 +86,6 @@ def user_logout(request):
     logout(request)
     return redirect("shop:index")
 
-
 def index(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -101,6 +100,14 @@ def index(request, category_slug=None):
     page = request.GET.get("page")
     paged_products = paginator.get_page(page)
 
+    # Calculate the range of page numbers to display
+    if paged_products.number <= 5:
+        page_range = range(1, min(11, paginator.num_pages + 1))
+    elif paged_products.number >= paginator.num_pages - 5:
+        page_range = range(max(1, paginator.num_pages - 10), paginator.num_pages + 1)
+    else:
+        page_range = range(paged_products.number - 5, paged_products.number + 6)
+
     context = {
         "category": category,
         "categories": categories,
@@ -108,6 +115,7 @@ def index(request, category_slug=None):
         "electronics": {},
         "product_list": products,
         "products": paged_products,  # Pass the paginated results
+        "page_range": page_range,
     }
 
     return render(request, "index.html", context)
@@ -182,6 +190,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     form = ReviewForm()
     form = ShopCartForm()
+    
     return render(request, "product_detail.html", {"product": product, "form": form})
 
 

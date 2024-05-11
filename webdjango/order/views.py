@@ -126,7 +126,7 @@ def shop_cart_checkout(request):
 
             ShopCart.objects.filter(user_id=current_user.id).delete()  # Clear & Delete shopcart
             request.session["cart_items"] = 0
-            messages.success(request, "Order has been completed. Thank You ")
+            messages.success(request, "Đơn hàng đã được ghi nhận. Xin cảm ơn ")
             return HttpResponseRedirect("/order")
 
     context = {
