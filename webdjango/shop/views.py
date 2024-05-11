@@ -188,10 +188,41 @@ def product_list(request):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    form = ReviewForm()
     form = ShopCartForm()
     
-    return render(request, "product_detail.html", {"product": product, "form": form})
+    user_reviews = Review.objects.filter(user_name=request.user.username).prefetch_related("product")
+    user_reviews_product_ids = set(map(lambda x: x.product.id, user_reviews))
+
+    # get request user cluster name (just the first one right now)
+    try:
+        user_cluster_name = User.objects.get(username=request.user.username).cluster_set.first().name
+    except:  # if no cluster assigned for a user, update clusters
+        update_clusters(is_new_user=True)
+        user_cluster_name = User.objects.get(username=request.user.username).cluster_set.first().name
+
+    # get usernames for other memebers of the cluster
+    user_cluster_other_members = (
+        Cluster.objects.get(name=user_cluster_name).users.exclude(username=request.user.username).all()
+    )
+    other_members_usernames = set(map(lambda x: x.username, user_cluster_other_members))
+
+    # get reviews by those users, excluding product reviewed by the request user
+    other_users_reviews = Review.objects.filter(user_name__in=other_members_usernames).exclude(
+        product__id__in=user_reviews_product_ids
+    )
+    other_users_reviews_product_ids = set(map(lambda x: x.product.id, other_users_reviews))
+
+    # then get a product list including the previous IDs, order by rating
+    product_list = sorted(
+        list(Product.objects.filter(id__in=other_users_reviews_product_ids)),
+        key=lambda x: x.average_rating(),
+        reverse=True,
+    )
+
+
+
+
+    return render(request, "product_detail.html", {"product": product, "form": form,"product_list": product_list})
 
 
 @login_required
