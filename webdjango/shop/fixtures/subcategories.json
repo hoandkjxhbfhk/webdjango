@@ -2,49 +2,81 @@
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 0",
-            "slug": "cate 0",
-            "image": "subcategories/view_-_2023-08-30T212917.699.png"
+            "name": "Topwear",
+            "slug": "subcate0",
+            "image": "subcategories\\Screenshot 2024-05-13 001135.png"
         }
     },
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 1",
-            "slug": "cate 1",
-            "image": "subcategories/view_-_2023-08-30T212949.867.png"
+            "name": "Bottomwear",
+            "slug": "subcate1",
+            "image": "subcategories\\Screenshot 2024-05-13 001155.png"
         }
     },
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 2",
-            "slug": "cate 2",
-            "image": "subcategories/view_-_2023-08-30T212955.668_rTZpZrT.png"
+            "name": "Dress",
+            "slug": "subcate2",
+            "image": "subcategories\\Screenshot 2024-05-13 001244.png"
         }
     },
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 3",
-            "slug": "cate 3",
-            "image": "subcategories/view_-_2023-08-30T212955.668.png"
+            "name": "Innerwear",
+            "slug": "subcate3",
+            "image": "subcategories\\Screenshot 2024-05-13 001259.png"
         }
     },
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 4",
-            "slug": "cate 4",
-            "image": "subcategories/view_-_2023-08-30T213011.710.png"
+            "name": "Socks",
+            "slug": "subcate4",
+            "image": "subcategories\\Screenshot 2024-05-13 001323.png"
         }
     },
     {
         "model": "shop.SubCategory",
         "fields": {
-            "name": "category 5",
-            "slug": "cate 5",
-            "image": "subcategories/view_-_2023-08-30T212917.699_pJ9RuWu.png"
+            "name": "Apparel Set",
+            "slug": "subcate5",
+            "image": "subcategories\\Screenshot 2024-05-13 001343.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "Shoes",
+            "slug": "subcate6",
+            "image": "subcategories\\Screenshot 2024-05-13 001354.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "Flip Flops",
+            "slug": "subcate7",
+            "image": "subcategories\\Screenshot 2024-05-13 001408.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "Sandal",
+            "slug": "subcate8",
+            "image": "subcategories\\Screenshot 2024-05-13 001528.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "Moviesub",
+            "slug": "subcate9",
+            "image": "subcategories\\Screenshot 2024-05-13 001543.png"
         }
     }
 ]

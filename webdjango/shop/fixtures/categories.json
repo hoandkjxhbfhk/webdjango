@@ -2,89 +2,25 @@
     {
         "model": "shop.Category",
         "fields": {
-            "name": "category 0",
+            "name": "Footwear",
             "slug": "cate 0",
-            "image": "categories/view_-_2023-08-30T213007.924.png"
+            "image": "categories\\Screenshot 2024-05-13 000806.png"
         }
     },
     {
         "model": "shop.Category",
         "fields": {
-            "name": "category 1",
+            "name": "Apparel",
             "slug": "cate 1",
-            "image": "categories/view_-_2023-08-30T212924.363.png"
+            "image": "categories\\Screenshot 2024-05-13 000939.png"
         }
     },
     {
         "model": "shop.Category",
         "fields": {
-            "name": "category 2",
+            "name": "Movie",
             "slug": "cate 2",
-            "image": "categories/view_-_2023-08-30T212917.699.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 3",
-            "slug": "cate 3",
-            "image": "categories/view_-_2023-08-30T213005.229.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 4",
-            "slug": "cate 4",
-            "image": "categories/view_-_2023-08-30T212932.724.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 5",
-            "slug": "cate 5",
-            "image": "categories/view_-_2023-08-30T212927.302.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 6",
-            "slug": "cate 6",
-            "image": "categories/view_-_2023-08-30T212949.867.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 7",
-            "slug": "cate 7",
-            "image": "categories/view_-_2023-08-30T212924.363_JPrwZbz.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 8",
-            "slug": "cate 8",
-            "image": "categories/view_-_2023-08-30T212917.699_73XWeBb.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 9",
-            "slug": "cate 9",
-            "image": "categories/view_-_2023-08-30T212952.991.png"
-        }
-    },
-    {
-        "model": "shop.Category",
-        "fields": {
-            "name": "category 10",
-            "slug": "cate 10",
-            "image": "categories/view_-_2023-08-30T212920.806.png"
+            "image": "categories\\Screenshot 2024-05-13 001003.png"
         }
     }
 ]
