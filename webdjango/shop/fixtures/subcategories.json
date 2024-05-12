@@ -1,0 +1,50 @@
+[
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 0",
+            "slug": "cate 0",
+            "image": "subcategories/view_-_2023-08-30T212917.699.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 1",
+            "slug": "cate 1",
+            "image": "subcategories/view_-_2023-08-30T212949.867.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 2",
+            "slug": "cate 2",
+            "image": "subcategories/view_-_2023-08-30T212955.668_rTZpZrT.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 3",
+            "slug": "cate 3",
+            "image": "subcategories/view_-_2023-08-30T212955.668.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 4",
+            "slug": "cate 4",
+            "image": "subcategories/view_-_2023-08-30T213011.710.png"
+        }
+    },
+    {
+        "model": "shop.SubCategory",
+        "fields": {
+            "name": "category 5",
+            "slug": "cate 5",
+            "image": "subcategories/view_-_2023-08-30T212917.699_pJ9RuWu.png"
+        }
+    }
+]

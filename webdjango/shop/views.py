@@ -86,6 +86,7 @@ def user_logout(request):
     logout(request)
     return redirect("shop:index")
 
+
 def index(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -189,7 +190,7 @@ def product_list(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     form = ShopCartForm()
-    
+
     user_reviews = Review.objects.filter(user_name=request.user.username).prefetch_related("product")
     user_reviews_product_ids = set(map(lambda x: x.product.id, user_reviews))
 
@@ -219,10 +220,7 @@ def product_detail(request, product_id):
         reverse=True,
     )
 
-
-
-
-    return render(request, "product_detail.html", {"product": product, "form": form,"product_list": product_list})
+    return render(request, "product_detail.html", {"product": product, "form": form, "product_list": product_list})
 
 
 @login_required

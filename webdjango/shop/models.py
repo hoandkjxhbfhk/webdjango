@@ -34,7 +34,6 @@ class Category(models.Model):
 class SubCategory(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, unique=True)
-    # category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="subcategory/", blank=True)
 
     class Meta:
@@ -56,7 +55,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.CharField(max_length=200, db_index=True)
     image = models.ImageField(upload_to="products/%Y/%m/%d", blank=True, max_length=255)
-    description = models.TextField(blank=True,null=True)
+    description = models.TextField(blank=True, null=True)
     price = models.PositiveIntegerField()
     discount_price = models.FloatField(blank=True, null=True)
     # pub_date = models.DateField()

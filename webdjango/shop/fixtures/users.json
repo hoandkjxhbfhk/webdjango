@@ -1,0 +1,314 @@
+[
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user1",
+            "email": "user1@gmail.com",
+            "password": "9GW22QDT1W"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user2",
+            "email": "user2@gmail.com",
+            "password": "CD2QCBZZP5"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user3",
+            "email": "user3@gmail.com",
+            "password": "1E1XLF857L"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user4",
+            "email": "user4@gmail.com",
+            "password": "X2W2LGWTHL"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user5",
+            "email": "user5@gmail.com",
+            "password": "0V7O9OEXYS"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user6",
+            "email": "user6@gmail.com",
+            "password": "NDXK8QBORK"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user7",
+            "email": "user7@gmail.com",
+            "password": "DEYNY53PCL"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user8",
+            "email": "user8@gmail.com",
+            "password": "CFQ99UXOSH"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user9",
+            "email": "user9@gmail.com",
+            "password": "UVI7AYTC1D"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user10",
+            "email": "user10@gmail.com",
+            "password": "HZ1DAHGX6H"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user11",
+            "email": "user11@gmail.com",
+            "password": "ECJSG3VP81"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user12",
+            "email": "user12@gmail.com",
+            "password": "T0GK6Z67FG"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user13",
+            "email": "user13@gmail.com",
+            "password": "5R3B8K075Q"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user14",
+            "email": "user14@gmail.com",
+            "password": "RDAB17JCXI"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user15",
+            "email": "user15@gmail.com",
+            "password": "SK1PLTTDK3"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user16",
+            "email": "user16@gmail.com",
+            "password": "8KZ3YGMZO9"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user17",
+            "email": "user17@gmail.com",
+            "password": "ST8EFIODYU"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user18",
+            "email": "user18@gmail.com",
+            "password": "31YC9OQS6P"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user19",
+            "email": "user19@gmail.com",
+            "password": "J2MKACX5C1"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user20",
+            "email": "user20@gmail.com",
+            "password": "7YTJ93M4MS"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user21",
+            "email": "user21@gmail.com",
+            "password": "FH262QY3N8"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user22",
+            "email": "user22@gmail.com",
+            "password": "34R8WCLMOQ"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user23",
+            "email": "user23@gmail.com",
+            "password": "WEXUSQN2QE"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user24",
+            "email": "user24@gmail.com",
+            "password": "4CSPS8ALFS"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user25",
+            "email": "user25@gmail.com",
+            "password": "WP0OM0EAHE"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user26",
+            "email": "user26@gmail.com",
+            "password": "13KDF66MOM"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user27",
+            "email": "user27@gmail.com",
+            "password": "98Y25AC9KI"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user28",
+            "email": "user28@gmail.com",
+            "password": "KUKHH48L15"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user29",
+            "email": "user29@gmail.com",
+            "password": "CB10UIW12S"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user30",
+            "email": "user30@gmail.com",
+            "password": "5XO5U1OLHH"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user31",
+            "email": "user31@gmail.com",
+            "password": "SWBRLOZZ53"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user32",
+            "email": "user32@gmail.com",
+            "password": "RJVPWLSI5O"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user33",
+            "email": "user33@gmail.com",
+            "password": "A6ZOUCVQXX"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user34",
+            "email": "user34@gmail.com",
+            "password": "3YMLWS7P6H"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user35",
+            "email": "user35@gmail.com",
+            "password": "COS34LZEYA"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user36",
+            "email": "user36@gmail.com",
+            "password": "4J4O7BL3AU"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user37",
+            "email": "user37@gmail.com",
+            "password": "ABACC57Z8U"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user38",
+            "email": "user38@gmail.com",
+            "password": "MIT75ZGHAD"
+        }
+    },
+    {
+        "model": "auth.User",
+        "fields": {
+            "username": "user39",
+            "email": "user39@gmail.com",
+            "password": "J3EJO8CEJF"
+        }
+    }
+]

@@ -124,10 +124,9 @@ from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
 from shop.models import Product, Review  # Thêm import cho mô hình Product và Review
-from sklearn.neighbors import NearestNeighbors
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
-
+from sklearn.neighbors import NearestNeighbors
 
 # @login_required
 # def recommendation(request):
@@ -274,22 +273,22 @@ def get_suggestions(request):
     return render(request, "tfidf/cosinesim.html", {"username": request.user.username, "context": context})
 
 
-@login_required
-def recommendation(request):
-    if request.user.is_authenticated:
-        # Focus on high-rated products by the user
-        user_reviews = Review.objects.filter(user_name=request.user, rating__gte=4)
-        liked_categories = set(user_reviews.values_list('product__category', flat=True))
-        liked_subcategories = set(user_reviews.values_list('product__subCategory', flat=True))
+# @login_required
+# def recommendation(request):
+#     if request.user.is_authenticated:
+#         # Focus on high-rated products by the user
+#         user_reviews = Review.objects.filter(user_name=request.user, rating__gte=4)
+#         liked_categories = set(user_reviews.values_list("product__category", flat=True))
+#         liked_subcategories = set(user_reviews.values_list("product__subCategory", flat=True))
 
-        # Recommend based on category, subcategory, and average rating
-        current_recommendations = Product.objects.filter(
-           Q(category__in=liked_categories) | Q(subCategory__in=liked_subcategories)
-        ).exclude(
-            id__in=user_reviews.values_list('product_id', flat=True)  # Exclude already reviewed
-        ).order_by('-average_rating', 'price')[:10]  # Prioritize high average ratings
+#         # Recommend based on category, subcategory, and average rating
+#         current_recommendations = (
+#             Product.objects.filter(Q(category__in=liked_categories) | Q(subCategory__in=liked_subcategories))
+#             .exclude(id__in=user_reviews.values_list("product_id", flat=True))  # Exclude already reviewed
+#             .order_by("-average_rating", "price")[:10]
+#         )  # Prioritize high average ratings
 
-        context = {"object_list": current_recommendations}
-        return render(request, "recommendation.html", context)
-    else:
-        pass
+#         context = {"object_list": current_recommendations}
+#         return render(request, "recommendation.html", context)
+#     else:
+#         pass

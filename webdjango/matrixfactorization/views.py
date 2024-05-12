@@ -2,11 +2,11 @@ import numpy as np
 import pandas as pd
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.db.models import Case, Q, When
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from shop.models import Product, Review
-from django.contrib.auth.models import User
 
 from .recommendation import Myrecommend, uuCF
 
@@ -136,28 +136,29 @@ def recomend(request):
     }
     return render(request, "recommend.html", context)
 
-def recom(request,k=7):
-    user_name=request.user.username
-    all_users = User.objects.all()  
+
+def recom(request, k=7):
+    user_name = request.user.username
+    all_users = User.objects.all()
     # Tạo một từ điển để lưu trữ tên người dùng và ID tương ứng
     user_id_dict = {user.username: user.id for user in all_users}
-    all_reviews = Review.objects.all().values_list('product_id', 'user_name', 'rating')
+    all_reviews = Review.objects.all().values_list("product_id", "user_name", "rating")
     data_for_uuCF = []
-    product_ids=[]
+    product_ids = []
     for product_id, name, rating in all_reviews:
         user_id = user_id_dict.get(name)
         data_for_uuCF.append([user_id, product_id, rating])  # Adjust column order if needed
         product_ids.append(product_id)  # Store product IDs for later use
     model = uuCF(data_for_uuCF, k=k)
     model.fit()
-    
+
     predictions = {}
     for product_id in product_ids:
         predicted_rating = model.pred(user_id_dict.get(user_name), product_id)
         predictions[product_id] = predicted_rating
 
     # Filter out already rated products
-    user_reviews = Review.objects.filter(user_name=user_name).values_list('product_id', flat=True)
+    user_reviews = Review.objects.filter(user_name=user_name).values_list("product_id", flat=True)
     already_rated_product_ids = set(user_reviews)
 
     # Sort and select top-k recommendations
