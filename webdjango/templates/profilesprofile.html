@@ -26,9 +26,9 @@
                     {% endif %}
                 </div>
                 <div class="col-md-6">
-                    <h1>Name: {{ profile.first_name }} {{ profile.last_name }}</h1>
+                    <h1>Họ và tên: {{ profile.first_name }} {{ profile.last_name }}</h1>
                     <h2>Email: {{ profile.email }}</h2>
-                    <p>Date of Birth: {{ profile.date_of_birth }}</p>
+                    <p>Ngày sinh: {{ profile.date_of_birth }}</p>
                 </div>
             </div>
         </div>
@@ -43,19 +43,19 @@
                     <p>{{ profile.display_bio|markdown }}</p>
                     <hr>
                     {% if profile.city %}
-                        <p>City: {{ profile.city }}</p>
+                        <p>Tỉnh/Thành phố: {{ profile.city }}</p>
                     {% endif %}
                     {% if profile.state %}
                         <p>State: {{ profile.state }}</p>
                     {% endif %}
                     {% if profile.country_of_residence %}
-                        <p>Country: {{ profile.country_of_residence }}</p>
+                        <p>Quốc gia: {{ profile.country_of_residence }}</p>
                     {% endif %}
                     {% if profile.favorite_animal %}
                         <p>Animal: {{ profile.favorite_animal }}</p>
                     {% endif %}
                     {% if profile.hobby %}
-                        <p>Hobby: {{ profile.hobby }}</p>
+                        <p>Sở thích: {{ profile.hobby }}</p>
                     {% endif %}
                 </div>
             </div>
