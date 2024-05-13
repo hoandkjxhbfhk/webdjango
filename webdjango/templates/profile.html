@@ -1,64 +1,63 @@
 {% extends 'base.html' %}
 {% load static markdown_deux_tags %}
 
+<head>
+    {% block css %}
+    <link href="{%static 'profiles/css/profiles.css' %}" rel="stylesheet">
+      {% endblock %}
+      </head>
 {% block body %}
+
 <main class="container">
-    <section id="profile-header">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="avatar-container">
+    <div class="profile">
+        <div class="profile-image">
+            
                     {% if profile.avatar %}
-                        <img src="{{ profile.avatar.url }}" alt="Avatar của {{ profile.first_name }} {{ profile.last_name }}" class="img-fluid rounded-circle" loading="lazy">
+                    <img src="{{ profile.avatar.url }}" alt="{{ profile.first_name }} {{ profile.last_name }}" width="80%" height="80%">
                     {% else %}
                         <div class="placeholder-avatar"></div>
                     {% endif %}
                 </div>
-            </div>
-            <div class="col-md-8">
-                <h2>{{ profile.first_name }} {{ profile.last_name }}</h2>
-                <p>Email: {{ profile.email }}</p>
-                <p>Ngày sinh: {{ profile.date_of_birth }}</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="profile-bio">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Bio</h3>
-                <p>{{ profile.display_bio|markdown }}</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="additional-info">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Thông tin thêm</h3>
-                <ul>
-                    {% if profile.city %}
-                        <li>Tỉnh/Thành phố: {{ profile.city }}</li>
-                    {% endif %}
-                    {% if profile.state %}
-                        <li>State: {{ profile.state }}</li>
-                    {% endif %}
-                    {% if profile.country_of_residence %}
-                        <li>Quốc gia: {{ profile.country_of_residence }}</li>
-                    {% endif %}
-                    {% if profile.favorite_animal %}
-                        <li>Động vật yêu thích: {{ profile.favorite_animal }}</li>
-                    {% endif %}
-                    {% if profile.hobby %}
-                        <li>Sở thích: {{ profile.hobby }}</li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </section>
-    <div class="d-flex justify-content-end gap-2">
-        <a href="{% url 'profiles:edit-profile' profile.slug %}" class="btn btn-primary">Chỉnh sửa</a>
-        <a href="{% url 'profiles:change-password' profile.slug %}" class="btn btn-outline-secondary">Đổi mật khẩu</a>
-    </div>
+                <div class="profile-user-settings">
+                    <a href="{{ profile.get_absolute_url }}">  <h5 class="profile-user-name" style="color:black; "><b>{{ profile.first_name }} {{ profile.last_name }}</b></h5></a>
+      
+                <button class="btn btn-outline-primary" >
+                  <a href="{% url 'profiles:edit-profile' profile.slug %}">Edit <i class="fas fa-cog" aria-hidden="true"></i></a>
+                </button>
+                 <button class="btn btn-outline-primary"> <a href="{% url 'profiles:change-password' profile.slug %}" class="button">Change Password</a></button>
+      
+      
+                  </div>
+      
+                  <div class="profile-stats">
+                    </h2>
+                    <p style="color:black">{{ profile.email }}{% if profile.city %}| {{ profile.city }} {% endif %}| {% if profile.country_of_residence %}
+                               {{ profile.country_of_residence }}</p>
+                          {% endif %}</p>
+      
+                      <ul>
+                          <li><span class="profile-stat-count"> Ngày sinh :</span>{{ profile.date_of_birth }} </li>
+                         {% if profile.hobby %}
+      
+                          <li><span class="profile-stat-count"> Sở thích :</span>  {{ profile.hobby }}</li>
+                         {% endif %}
+                      </ul>
+      
+                  </div>
+                  <div class="profile-bio">
+                    {{ profile.display_bio|markdown }}
+                      </p>
+      
+      
+                  </div>
+      
+              </div>
+              <!-- End of profile section -->
+      
+          </div>
+          <!-- End of container -->
+      
+      
 </main>
 
 {% if profiles %}
@@ -78,38 +77,4 @@
     
 {% endif %}
 
-<style>
-    /* CSS cho avatar */
-    .avatar-container img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 50%;
-    }
-
-    /* CSS cho placeholder avatar */
-    .placeholder-avatar {
-        width: 150px; 
-        height: 150px;
-        background-color: #ddd;
-        border-radius: 50%;
-    }
-    
-    /* CSS cho phần profile-item */
-    .profile-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .profile-item-buttons {
-        margin-left: auto;
-    }
-
-    /* CSS cho phần thông tin chi tiết */
-    #avatar {
-        margin-bottom: 20px; 
-    }
-
-</style>
 {% endblock %}

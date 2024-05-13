@@ -39,9 +39,9 @@
         <h1>{{product.name}}</h1>
         <h4><del>{{product.price}}.VND</del>          {{product.discount_price}}.VND</h4>
         <div class="description">
-          <p style="color:black;">{{product.description}}</p>
+          <p style="color:black;">Mô tả: {{product.description}}</p>
             <p style="color:black;"> Tổng số lượt đánh giá :{{ product.review_set.count }} lượt </p>
-            <p style="color:black;"> Average rating: {{ product.average_rating | floatformat }} average rating</p>
+            <p style="color:black;"> Average Rating: {{ product.average_rating | floatformat }} </p>
 			<p style="color:black;"> Lần cập nhật gần nhất : {{product.updated}}</p>
           <p style="color:black;"> Kho hàng hiện còn : {{product.stock}} sản phẩm </p>
         </div>
@@ -118,7 +118,7 @@
 			<li>
 				<div class="comment-main-level">
 					<!-- Avatar -->
-					<div class="comment-avatar"><img src="{{ review.user.image.url }}" alt="{{ review.user.username }}"> </div>
+					<div class="comment-avatar"><img src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg" alt="{{ review.user.username }}"> </div>
 					<!-- Contenedor del Comentario -->
 					<div class="comment-box">
 						<div class="comment-head">

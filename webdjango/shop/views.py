@@ -149,6 +149,7 @@ def search_list(request):
     return render(request, "searchview.html", {"products": products})
 
 
+
 def product_list_subcategory(request, subcategory_slug=None):
     subcategories = SubCategory.objects.all()
     products = Product.objects.filter(available=True)
