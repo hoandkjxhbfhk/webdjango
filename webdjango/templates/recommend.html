@@ -12,33 +12,36 @@
     <!-- Movie list -->
     <div class="gallery">
             {% if movie_list %}
-            {% for movie in movie_list %}
-            <div class="col-md-3 col-sm-6">
-                <div class="product-grid2">
-                    <div class="product-image2">
-                        <a href="{% url 'shop:product_detail' movie.id %}">
-                            <img class="pic-1" height="50px" src="{{ movie.image.url }}">
-                            <img class="pic-2" src="{{ product.image.url }}">
-                        </a>
-                        <ul class="social">
-                            <li><a href="{% url 'shop:product_detail' movie.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
-                            <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
-                            <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+            {% for product in movie_list %}
+            <div class="product-item" style="width: 25%; float: left; padding: 0 15px; box-sizing: border-box;">
+                    <div class="product-grid2">
+                        <div class="product-image2">
+                            <a href="{% url 'shop:product_detail' product.id %}">
+                                <img  src="{{ product.image.url }}" 
+                                alt="{{ product.name }}"  
+                                class="img-fluid"  
+                                style="object-fit: cover; width: 100%; height: 200px;">
                             
-                        </ul>
-                        <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
+                            </a>
+                            <ul class="social">
+                                <li><a href="{% url 'shop:product_detail' product.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                                <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                                
+                            </ul>
+                            <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="title"><a href="{% url 'shop:product_detail' product.id %}">{{ product.name|truncatechars:20 }}
+                </a></h3>
+                            <h3 class="title">{{ product.review_set.count }} Reviews</h3>
+                            <h3 class="title">{{ product.average_rating | floatformat }} Average Rating</h3>
+                            <span class="price">{{product.price}} .VND </span>
+                        </div>
                     </div>
-                    <div class="product-content">
-                        <h3 class="title"><a href="{% url 'shop:product_detail' movie.id %}">{{ movie.name }}
-            </a></h3>
-                        <h3 class="title">{{ movie.review_set.count }} Reviews</h3>
-                        <h3 class="title">{{ movie.average_rating | floatformat }} Average Rating</h3>
-                        <span class="price">{{movie.price}} .VND </span>
-                    </div>
+        
                 </div>
-    
-            </div>
-                {% endfor %}
+            {% endfor %}
                 {% endif %}
         </div>
 
