@@ -38,6 +38,7 @@ def signup(request):
                 email = request.POST["email"]
                 username = request.POST["username"]
                 Profile.objects.create(user=user, first_name=username, email=email)  # Tạo profile cho người dùng mới
+                
 
                 return redirect("shop:index")
         else:
@@ -79,6 +80,7 @@ def user_login(request):
         else:
             return render(request, "login.html", {"error": "Invalid Login "})
     else:
+        update_clusters(True)
         return render(request, "login.html")
 
 
@@ -219,6 +221,9 @@ def product_detail(request, product_id):
         key=lambda x: x.average_rating(),
         reverse=True,
     )
+    product_list=product_list[:4]
+    print(product_list)
+
 
     return render(request, "product_detail.html", {"product": product, "form": form, "product_list": product_list})
 

@@ -123,8 +123,6 @@ def recomend(request):
                 product_id = list(product_to_row.keys())[list(product_to_row.values()).index(idx)]
                 product_ids.append(product_id)
 
-            # ... (rest of your code to generate 'recommended_products' remains the same)
-
             preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(product_ids)])
 
             # Lấy các sản phẩm được dự đoán tốt nhất

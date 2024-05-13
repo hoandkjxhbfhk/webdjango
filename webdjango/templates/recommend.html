@@ -29,7 +29,7 @@
                         <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
                     </div>
                     <div class="product-content">
-                        <h3 class="title"><a href="{% url 'shop:product_detail' movie.id %}">{{ product.name }}
+                        <h3 class="title"><a href="{% url 'shop:product_detail' movie.id %}">{{ movie.name }}
             </a></h3>
                         <h3 class="title">{{ movie.review_set.count }} Reviews</h3>
                         <h3 class="title">{{ movie.average_rating | floatformat }} Average Rating</h3>
