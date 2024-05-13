@@ -12,7 +12,7 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("", include("django.contrib.auth.urls")),
     # path('oauth/', include('social_django.urls', namespace="social")),
-    path("product_list_category/", views.index, name="list"),
+    #path("product_list_category/", views.index, name="list"),
     path("index/", views.index, name="index"),
     path("product_list", views.index, name="product_list"),
     path("search/", views.search_list, name="query"),

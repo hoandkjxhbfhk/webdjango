@@ -10,7 +10,7 @@ def Myrecommend():
     def normalizeRatings(myY, myR):
         # The mean is only counting movies that were rated
         Ymean = np.sum(myY, axis=1) / np.sum(myR, axis=1)
-        Ymean = Ymean.reshape((Ymean.shape[0], 1))
+        Ymean = Ymean.reshape((Ymean.shape[0], -1))
         return myY - Ymean, Ymean
 
     def flattenParams(myX, myTheta):
@@ -46,9 +46,7 @@ def Myrecommend():
 
     df = pd.DataFrame(list(Review.objects.all().values()))
     print(df)
-    # mynu = df.user_id.unique().shape[0]
     mynu = df.user_name.unique().shape[0]
-    # mynm = df.movie_id.unique().shape[0]
     mynm = df.product_id.unique().shape[0]
     mynf = 10
     Y = np.zeros((mynm, mynu))
@@ -63,10 +61,6 @@ def Myrecommend():
     for idx, product_id in enumerate(df["product_id"].unique()):
         product_to_row[product_id] = idx
     for row in df.itertuples():
-        # Y[row[2] - 1, row[4] - 1] = row[3]
-        # if row[1] not in product_to_row or row[4] not in user_to_column.values():
-        #     print(row[1],row[4])
-        #     continue  # Bỏ qua các dòng không thể ánh xạ
         Y[product_to_row[row[2]], user_to_column[row[4]]] = row[6]
 
     print(user_to_column)
@@ -94,7 +88,7 @@ def Myrecommend():
     result = scipy.optimize.minimize(
         fun=cofiCostFunc,
         x0=myflat,
-        args=(Ynorm, R, mynu, mynm, mynf, 0),
+        args=(Ynorm, R, mynu, mynm, mynf, 12.2),
         method="TNC",
         jac=cofiGrad,
         options={"maxiter": 100},

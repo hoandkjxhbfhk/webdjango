@@ -120,7 +120,6 @@ def index(request, category_slug=None):
         "products": paged_products,  # Pass the paginated results
         "page_range": page_range,
     }
-
     return render(request, "index.html", context)
 
 
@@ -155,7 +154,6 @@ def product_list_subcategory(request, subcategory_slug=None):
     products = Product.objects.filter(available=True)
     if subcategory_slug:
         subcategory = get_object_or_404(SubCategory, slug=subcategory_slug)
-        print(subcategory)
         products = products.filter(subCategory=subcategory)
     return render(
         request, "list.html", {"subcategory": subcategory, "subcategories": subcategories, "products": products}

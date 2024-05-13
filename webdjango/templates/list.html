@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load static markdown_deux_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,38 +13,93 @@
   {% block body %}
 <center><h1> {%if category %}{{ category.name}}{% else %}{% endif %}</h1></center>
 <center><h1>{%if subcategory %}{{ subcategory.name}}{% else %}{% endif %}</h1></center>
-{% for product in products %}
-    <div class="container">
+<div class="container">
+  <div class="container">
+<div class="row" id="slider-text">
+  <div class="col-md-6">
+    <h2><b>Các sản phẩm hiện có </b></h2>
+  </div>
+</div>
 
-        <div class="gallery">
-{% if product_list %}
-{% for product in product_list %}
-            <a href="{% url 'shop:product_detail' product.id %}">
-            <div class="gallery-item" tabindex="0">
+</div>
+</div>
 
-              {{ product.name }}
+  {% if product_list %}
 
-                <img src="{{product.image.url}}"  class="gallery-image" alt="">
+  {% for product in products %}
+      <div class="col-md-3 col-sm-6">
+          <div class="product-grid2">
+              <div class="product-image2">
+                  <a href="{% url 'shop:product_detail' product.id %}">
+                      <img  src="{{ product.image.url }}" 
+                      alt="{{ product.name }}"  
+                      class="img-fluid"  
+                      style="object-fit: cover; width: 100%; height: 200px;">
+                  
+                  </a>
+                  <ul class="social">
+                      <li><a href="{% url 'shop:product_detail' product.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                      <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                      <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+          
+                  </ul>
+                  <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
+              </div>
+              <div class="product-content">
+                  <h3 class="title"><a href="{% url 'shop:product_detail' product.id %}">{{ product.name|truncatechars:20 }}
+      </a></h3>
+        <h3 class="title">{{ product.review_set.count }} Reviews</h3>
+        <h3 class="title">{{ product.average_rating | floatformat }} Average Rating</h3>
+                  <span class="price">{{product.price}} .VND </span>
+              </div>
+          </div>
 
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><i class="fas fa-star" aria-hidden="true"></i>{{ product.average_rating | floatformat }} average rating</li>
-                        <li class="gallery-item-comments"><i class="fas fa-comment" aria-hidden="true"></i> {{ product.review_set.count }} reviews</li>
-                    </ul>
-
-                </div>
-
-            </div>
-                </a>
-          {% endfor %}
-          {% else %}
-    <p>No products are available.</p>
-{% endif %}
-<div class="loader"></div>
-        </div>
-    </div>
-</body>
+      </div>
 {% endfor %}
+</a>
+{% else %}
+  <p> Hiện không có sản phẩm nào </p>
+{% endif %}
+
+</div>
+
+<div class="row justify-content-center" style="center">
+  <div class="col-md-10">
+      {% if products.has_other_pages %}
+    <ul class="pagination">
+      {% if products.has_previous %}
+      <li class="page-item">
+        <a class ="page-link" href="?page={{products.previous_page_number}}">&laquo;</a>
+      </li>
+      {% else %}
+      <li class ="page-item disabled">
+      <a class="page-link"> &laquo;</a>
+      </li>
+      {% endif %}
+      {% for i in page_range %}
+  {% if products.number == i %}
+      <li class="page-item active">
+          <a class="page-link">{{ i }}</a>
+      </li>
+  {% else %}
+      <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+      </li>
+  {% endif %}
+{% endfor %}
+      {% if products.has_next %}
+      <li class="page-item">
+        <a class ="page-link" href="?page={{products.next_page_number}}">&raquo;</a>
+      </li>
+      {% else %}
+      <li class ="page-item disabled">
+      <a class="page-link"> &raquo;</a>
+      </li>
+      {% endif %}
+
+    </ul>
+    {% endif %}
+  </div>
+</div>
 
 {% endblock %}

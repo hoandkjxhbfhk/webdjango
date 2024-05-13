@@ -452,13 +452,13 @@
 
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Electronics & appliances
+								Electronics 
 							</a>
 							<div class="dropdown-menu">
 								<div class="agile_inner_drop_nav_info p-4">
 									<h5 class="mb-3">Electronics </h5>
 									<div class="row">
-										<div class="col-sm-3 multi-gd-img">
+										<div class="col-sm-1 multi-gd-img">
 											<ul class="multi-column-dropdown">
      					{% for e in electronics %}
 							<li class="menu-item"><a href ="{{e.get_absolute_url}}" class="menu-name">{{e.name}}</a></li>
@@ -491,31 +491,7 @@
 												</li>
 											</ul>
 										</div>
-										<div class="col-sm-3 multi-gd-img">
-											<ul class="multi-column-dropdown">
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='Laptops' %}">Laptops</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='DrivesStorage' %}">Drives & Storage</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='PrintersInk' %}">Printers & Ink</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='NetworkingDevices' %}">Networking Devices</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='ComputerAccessories' %}">Computer Accessories</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='GameZone' %}">Game Zone</a>
-												</li>
-												<li>
-													<a href="{% url 'shop:product_list_by_category' category_slug='Software' %}"></a>Software</a>
-												</li>
-											</ul>
-										</div>
+										
 										<div class="col-sm-3 multi-gd-img">
 											<ul class="multi-column-dropdown">
 												<li>

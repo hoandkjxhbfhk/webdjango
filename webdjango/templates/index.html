@@ -591,6 +591,15 @@
       <h2><b>Các sản phẩm hiện có </b></h2>
     </div>
   </div>
+<style>
+    .custom-h1 {
+        color: #007bff; /* Đổi màu chữ thành màu xanh dương */
+        font-family: Arial, sans-serif; /* Thay đổi font chữ nếu cần */
+    }
+</style>
+
+<center><h1 class="custom-h1">{% if category %}{{ category.name }}{% else %}{% endif %}</h1></center>
+<center><h1 class="custom-h1">{% if subcategory %}{{ subcategory.name }}{% else %}{% endif %}</h1></center>
 
 </div>
 </div>

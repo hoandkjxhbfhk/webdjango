@@ -75,7 +75,7 @@ def shop_cart_add(request, product_id):
 
 @login_required(login_url="/login")
 def shop_cart_delete(request, id):
-    url = request.META.get("HTTP_REFERER")  # Bir önceki adresi alır
+    url = request.META.get("HTTP_REFERER")  
     ShopCart.objects.filter(id=id).delete()
     messages.success(request, "Product deleted from  cart.. ")
     return HttpResponseRedirect(url)
@@ -90,7 +90,7 @@ def shop_cart_checkout(request):
     cartwithtax = 0
     for rs in shopcart:
         carttotal += rs.quantity * rs.product.discount_price
-        carttax = (14 / 100) * carttotal
+        carttax = (10 / 100) * carttotal
         cartwithtax = carttotal + carttax
 
     form = OrderForm(request.POST or None)
