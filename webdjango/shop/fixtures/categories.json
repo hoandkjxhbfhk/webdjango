@@ -3,7 +3,7 @@
         "model": "shop.Category",
         "fields": {
             "name": "Footwear",
-            "slug": "cate 0",
+            "slug": "cate0",
             "image": "categories\\Screenshot 2024-05-13 000806.png"
         }
     },
@@ -11,7 +11,7 @@
         "model": "shop.Category",
         "fields": {
             "name": "Apparel",
-            "slug": "cate 1",
+            "slug": "cate1",
             "image": "categories\\Screenshot 2024-05-13 000939.png"
         }
     },
@@ -19,7 +19,7 @@
         "model": "shop.Category",
         "fields": {
             "name": "Movie",
-            "slug": "cate 2",
+            "slug": "cate2",
             "image": "categories\\Screenshot 2024-05-13 001003.png"
         }
     }

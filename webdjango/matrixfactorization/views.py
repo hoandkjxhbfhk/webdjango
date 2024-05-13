@@ -106,7 +106,7 @@ def recomend(request):
     user_ratings = df[df["user_name"] == request.user.username]
     if user_ratings.empty:  # If the user has no ratings
         #  Recommendation strategy for new users (explore this further)
-        recommended_products = Product.objects.order_by("?")[:5]  # Placeholder, adjust strategy
+        recommended_products = Product.objects.order_by("-name")[:5]  # Placeholder, adjust strategy
     else:
         prediction_matrix, Ymean, product_to_row, user_to_column = Myrecommend()
 
