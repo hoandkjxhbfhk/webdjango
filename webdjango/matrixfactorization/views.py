@@ -119,7 +119,7 @@ def recomend(request):
             my_predictions = prediction_matrix[:, int(name)] + Ymean.flatten()
             pred_idxs_sorted = np.argsort(my_predictions)[::-1]
             product_ids = []
-            for idx in pred_idxs_sorted[:5]:  # Get top 5
+            for idx in pred_idxs_sorted[:8]:  # Get top 5
                 product_id = list(product_to_row.keys())[list(product_to_row.values()).index(idx)]
                 product_ids.append(product_id)
 
@@ -135,7 +135,7 @@ def recomend(request):
     return render(request, "recommend.html", context)
 
 
-def recom(request, k=7):
+def recom(request, k=8):
     user_name = request.user.username
     all_users = User.objects.all()
     # Tạo một từ điển để lưu trữ tên người dùng và ID tương ứng
