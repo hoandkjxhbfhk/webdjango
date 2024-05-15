@@ -2,7 +2,7 @@
     {
         "model": "shop.Category",
         "fields": {
-            "name": "Footwear",
+            "name": "Movie",
             "slug": "cate0",
             "image": "categories\\Screenshot 2024-05-13 000806.png"
         }
@@ -18,9 +18,87 @@
     {
         "model": "shop.Category",
         "fields": {
-            "name": "Movie",
+            "name": "Footwear",
             "slug": "cate2",
             "image": "categories\\Screenshot 2024-05-13 001003.png"
         }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Book",
+            "slug": "cate3",
+            "image": "categories\\Screenshot 2024-05-14 205423.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Bycicle",
+            "slug": "cate4",
+            "image": "categories\\Screenshot 2024-05-14 205451.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Laptop",
+            "slug": "cate5",
+            "image": "categories\\Screenshot 2024-05-14 205516.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Drink",
+            "slug": "cate6",
+            "image": "categories\\Screenshot 2024-05-14 205532.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Fruit",
+            "slug": "cate7",
+            "image": "categories\\Screenshot 2024-05-14 205548.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Snack",
+            "slug": "cate8",
+            "image": "categories\\Screenshot 2024-05-14 205747.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Balo",
+            "slug": "cate9",
+            "image": "categories\\Screenshot 2024-05-14 205814.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Blanket",
+            "slug": "cate10",
+            "image": "categories\\Screenshot 2024-05-14 205828.png"
+        }
+    },
+    {
+        "model": "shop.Category",
+        "fields": {
+            "name": "Headphone",
+            "slug": "cate11",
+            "image": "categories\\Screenshot 2024-05-14 205849.png"
+        }
     }
+
+
+
+
+
+
 ]

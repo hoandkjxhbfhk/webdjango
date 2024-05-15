@@ -310,7 +310,7 @@
 
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Đồ điện tử 
+								Electronics 
 							</a>
 							<div class="dropdown-menu">
 								<div class="agile_inner_drop_nav_info p-4">
@@ -479,13 +479,13 @@
 						</li>
 
 						<li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
-						<a class="nav-link" href="{% url 'matrixfactorization:recommend' %}"> Đề xuất </a>
+						<a class="nav-link" href="{% url 'matrixfactorization:recommend' %}"> Recommendation </a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="">Trending </a>
+							<a class="nav-link" href="{% url 'shop:trending' %}">Trending </a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href=""> Hàng mới về </a>
+							<a class="nav-link" href="{% url 'shop:product_list' %}"> Hàng mới về </a>
 						</li>
 
 						<li class="nav-item">
@@ -630,7 +630,7 @@
         </a></h3>
 					<h3 class="title">{{ product.review_set.count }} Reviews</h3>
 					<h3 class="title">{{ product.average_rating | floatformat }} Average Rating</h3>
-                    <span class="price">{{product.price}} .VND </span>
+                    <span class="price"> <del>{{product.price}} VND</del>    {{product.discount_price}} VND </span>
                 </div>
             </div>
 

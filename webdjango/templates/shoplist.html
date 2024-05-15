@@ -12,40 +12,46 @@
 <body>
 
   {% block body %}
-<center><h1> {%if category %}{{ category.name}}{% else %}{% endif %}</h1></center>
-<center><h1>{%if subcategory %}{{ subcategory.name}}{% else %}{% endif %}</h1></center>
-{% for product in products %}
-    <div class="container">
+<center><h1> Trending </h1></center>
 
-        <div class="gallery">
 {% if product_list %}
-{% for product in product_list %}
-            <a href="{% url 'shop:product_detail' product.id %}">
-            <div class="gallery-item" tabindex="0">
 
-              {{ product.name }}
-
-                <img src="{{product.image.url}}"  class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><i class="fas fa-star" aria-hidden="true"></i>{{ product.average_rating | floatformat }} average rating</li>
-                        <li class="gallery-item-comments"><i class="fas fa-comment" aria-hidden="true"></i> {{ product.review_set.count }} reviews</li>
+		{% for product in products %}
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid2">
+                <div class="product-image2">
+                    <a href="{% url 'shop:product_detail' product.id %}">
+                        <img  src="{{ product.image.url }}" 
+                        alt="{{ product.name }}"  
+                        class="img-fluid"  
+                        style="object-fit: cover; width: 100%; height: 200px;">
+                    
+                    </a>
+                    <ul class="social">
+                        <li><a href="{% url 'shop:product_detail' product.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
+                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                        <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+						
                     </ul>
-
+                    <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
                 </div>
-
+                <div class="product-content">
+                    <h3 class="title"><a href="{% url 'shop:product_detail' product.id %}">{{ product.name|truncatechars:20 }}
+        </a></h3>
+					<h3 class="title">{{ product.review_set.count }} Reviews</h3>
+					<h3 class="title">{{ product.average_rating | floatformat }} Average Rating</h3>
+                    <span class="price"> <del>{{product.price}} VND</del>    {{product.discount_price}} .VND </span>
+                </div>
             </div>
-                </a>
-          {% endfor %}
-          {% else %}
-    <p>No products are available.</p>
-{% endif %}
-<div class="loader"></div>
+
         </div>
-    </div>
+	{% endfor %}
+</a>
+{% else %}
+    <p> Hiện không có sản phẩm nào </p>
+{% endif %}
+        
 </body>
-{% endfor %}
+
 
 {% endblock %}

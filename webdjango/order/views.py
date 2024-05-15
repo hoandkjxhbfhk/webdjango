@@ -28,7 +28,8 @@ def shop_cart_list(request):
     carttotal = 0
     for rs in shopcart:
         carttotal += rs.quantity * rs.product.discount_price
-    carttax = (14 / 100) * carttotal
+    carttax = round((10 / 100) * carttotal, 1)
+
     cartwithtax = carttotal + carttax
 
     context = {

@@ -183,7 +183,7 @@ def review_detail(request, review_id):
 
 
 def product_list(request):
-    product_list = Product.objects.all()
+    product_list = Product.objects.all()[:8]
     context = {"product_list": product_list}
     return render(request, "product_list.html", context)
 
@@ -256,6 +256,19 @@ def user_review_list(request, username=None):
     context = {"latest_review_list": latest_review_list, "username": username}
     return render(request, "user_review_list.html", context)
 
+def trending(request):
+    products = Product.objects.filter(available=True)
+    products=products[:100]
+    # Sắp xếp sản phẩm theo rating trung bình giảm dần
+    sorted_products = sorted(products, key=lambda x: x.average_rating(), reverse=True)
+    # Giới hạn số lượng sản phẩm hiển thị (ví dụ: 10 sản phẩm)
+    trending_products = sorted_products[:10]
+    print(sorted_products)
+
+    context = {
+        'product_list': trending_products,
+    }
+    return render(request, "product_list.html",context)
 
 @login_required
 def user_recommendation_list(request):

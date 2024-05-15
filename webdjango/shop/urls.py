@@ -32,6 +32,7 @@ urlpatterns = [
     path("review/user/", views.user_review_list, name="user_review_list"),
     path("recommendation/", views.user_recommendation_list, name="user_recommendation_list"),
     path("product_list_by_category/<slug:category_slug>/", views.index, name="product_list_by_category"),
+    path("trending/",views.trending,name="trending"),
 ]
 
 if settings.DEBUG:
