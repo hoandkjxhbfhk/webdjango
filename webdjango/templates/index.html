@@ -291,8 +291,6 @@
                                 <ul class="menu clone-main-menu">
 
                                      {% for c in categories %}
-
-     {% if category.slug == c.slug %} {%endif %}
 			<li class="menu-item"><a href ="{{ c.get_absolute_url }}" class="menu-name"><img src="{{ c.image.url }}" width="30" height="30" ALT="category logo">{{c.name}}</a></li>
 
 				{% endfor %}

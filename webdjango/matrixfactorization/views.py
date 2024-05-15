@@ -128,6 +128,7 @@ def recomend(request):
             # Lấy các sản phẩm được dự đoán tốt nhất
             recommended_products = Product.objects.filter(id__in=product_ids).order_by(preserved)
             print(recommended_products)
+            print(10)
     context = {
         "movie_list": recommended_products,
         "user_id": request.user.id,

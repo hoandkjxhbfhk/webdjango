@@ -74,6 +74,7 @@ def user_login(request):
         user = auth.authenticate(username=uname, password=pwd)
         if user is not None:
             auth.login(request, user)
+            update_clusters(True)
             # return render(request, 'index.html', {'error': "Invalid Login"})
             return redirect("shop:index")
 
