@@ -344,7 +344,7 @@
 						{% if request.user.is_authenticated %}
 						<li class="text-center border-right text-white">
 
-							<a href="{{ profile.get_absolute_url }}" class="text-white">
+							<a href="{{ request.user.profile.get_absolute_url }}" class="text-white">
 								<i class="fa fa-user"></i> {{ request.user}} </a>
 						</li>
 						<li class="text-center  boarder-right text-white">
