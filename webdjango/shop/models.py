@@ -132,7 +132,7 @@ class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     pub_date = models.DateTimeField("ngày tạo")
     user_name = models.CharField(max_length=100)
-    comment = models.CharField(max_length=200)
+    comment = models.CharField(max_length=2000)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
 

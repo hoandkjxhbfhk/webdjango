@@ -12,7 +12,7 @@ class ShopCart(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return self.product
+        return str(self.product)
 
     @property
     def amount(self):

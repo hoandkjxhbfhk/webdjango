@@ -10,7 +10,7 @@ def update_clusters(is_new_user):
     num_reviews = Review.objects.count()
     print(num_reviews)
     # update_step = ((num_reviews/100)+1) * 5
-    update_step = 6
+    update_step = 11
     print(update_step)
     if num_reviews % update_step == 0 or is_new_user:
         # Create a sparse matrix from user reviews

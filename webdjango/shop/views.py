@@ -194,6 +194,7 @@ def product_detail(request, product_id):
     form = ShopCartForm()
 
     user_reviews = Review.objects.filter(user_name=request.user.username).prefetch_related("product")
+    user_reviews=user_reviews[:5]
     user_reviews_product_ids = set(map(lambda x: x.product.id, user_reviews))
 
     # get request user cluster name (just the first one right now)
