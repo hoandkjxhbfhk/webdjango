@@ -76,7 +76,7 @@ def shop_cart_add(request, product_id):
 
 @login_required(login_url="/login")
 def shop_cart_delete(request, id):
-    url = request.META.get("HTTP_REFERER")  
+    url = request.META.get("HTTP_REFERER")
     ShopCart.objects.filter(id=id).delete()
     messages.success(request, "Product deleted from  cart.. ")
     return HttpResponseRedirect(url)

@@ -11,8 +11,6 @@ urlpatterns = [
     path("logout/", views.user_logout, name="logout"),
     path("about/", views.about, name="about"),
     path("", include("django.contrib.auth.urls")),
-    # path('oauth/', include('social_django.urls', namespace="social")),
-    #path("product_list_category/", views.index, name="list"),
     path("index/", views.index, name="index"),
     path("product_list", views.index, name="product_list"),
     path("search/", views.search_list, name="query"),
@@ -32,7 +30,7 @@ urlpatterns = [
     path("review/user/", views.user_review_list, name="user_review_list"),
     path("recommendation/", views.user_recommendation_list, name="user_recommendation_list"),
     path("product_list_by_category/<slug:category_slug>/", views.index, name="product_list_by_category"),
-    path("trending/",views.trending,name="trending"),
+    path("trending/", views.trending, name="trending"),
 ]
 
 if settings.DEBUG:

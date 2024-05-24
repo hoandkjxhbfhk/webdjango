@@ -1,3 +1,6 @@
+exclude: '^docs/|/migrations/|devcontainer.json'
+default_stages: [commit]
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0

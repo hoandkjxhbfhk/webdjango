@@ -31,34 +31,7 @@ class Review(models.Model):
 
 class Cluster(models.Model):
     name = models.CharField(max_length=100)
-    users = models.ManyToManyField(User)
+    users = models.ManyToManyField(User, related_name="reviews_clusters")
 
     def get_members(self):
         return "\n".join([u.username for u in self.users.all()])
-
-
-"""
-# Trong model Wine
-def __str__(self):
-    return self.name
-
-def average_rating(self):
-    all_ratings = [review.rating for review in self.review_set.all()]
-    if all_ratings:
-        return sum(all_ratings) / len(all_ratings)
-    return 0
-
-# Trong model Review
-def is_valid_rating(self):
-    return self.rating in range(1, 6)
-
-def __str__(self):
-    return f"{self.wine.name} - {self.rating}"
-
-# Trong model Cluster
-def get_member_count(self):
-    return self.users.count()
-
-def __str__(self):
-    return self.name
-"""

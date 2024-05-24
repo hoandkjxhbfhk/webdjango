@@ -1,0 +1,32 @@
+volumes:
+  webdjango_postgres_data: {}
+  webdjango_postgres_data_backups: {}
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: webdjango_django
+    container_name: webdjango_django
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app:z
+    ports:
+      - "8000:8000"
+    command: /start.sh
+    env_file:
+      - ./.env
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/postgres/Dockerfile
+    image: webdjango_postgres
+    container_name: webdjango_postgres
+    volumes:
+      - webdjango_postgres_data:/var/lib/postgresql/data
+      - webdjango_postgres_data_backups:/backups
+    env_file:
+      - ./.env

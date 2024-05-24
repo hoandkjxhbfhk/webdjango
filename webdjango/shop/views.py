@@ -38,7 +38,6 @@ def signup(request):
                 email = request.POST["email"]
                 username = request.POST["username"]
                 Profile.objects.create(user=user, first_name=username, email=email)  # Tạo profile cho người dùng mới
-                
 
                 return redirect("shop:index")
         else:
@@ -149,7 +148,6 @@ def search_list(request):
     return render(request, "searchview.html", {"products": products})
 
 
-
 def product_list_subcategory(request, subcategory_slug=None):
     subcategories = SubCategory.objects.all()
     products = Product.objects.filter(available=True)
@@ -194,7 +192,7 @@ def product_detail(request, product_id):
     form = ShopCartForm()
 
     user_reviews = Review.objects.filter(user_name=request.user.username).prefetch_related("product")
-    user_reviews=user_reviews[:5]
+    user_reviews = user_reviews[:5]
     user_reviews_product_ids = set(map(lambda x: x.product.id, user_reviews))
 
     # get request user cluster name (just the first one right now)
@@ -222,9 +220,8 @@ def product_detail(request, product_id):
         key=lambda x: x.average_rating(),
         reverse=True,
     )
-    product_list=product_list[:4]
+    product_list = product_list[:4]
     print(product_list)
-
 
     return render(request, "product_detail.html", {"product": product, "form": form, "product_list": product_list})
 
@@ -258,9 +255,10 @@ def user_review_list(request, username=None):
     context = {"latest_review_list": latest_review_list, "username": username}
     return render(request, "user_review_list.html", context)
 
+
 def trending(request):
     products = Product.objects.filter(available=True)
-    products=products[:100]
+    products = products[:100]
     # Sắp xếp sản phẩm theo rating trung bình giảm dần
     sorted_products = sorted(products, key=lambda x: x.average_rating(), reverse=True)
     # Giới hạn số lượng sản phẩm hiển thị (ví dụ: 10 sản phẩm)
@@ -268,9 +266,10 @@ def trending(request):
     print(sorted_products)
 
     context = {
-        'product_list': trending_products,
+        "product_list": trending_products,
     }
-    return render(request, "product_list.html",context)
+    return render(request, "product_list.html", context)
+
 
 @login_required
 def user_recommendation_list(request):

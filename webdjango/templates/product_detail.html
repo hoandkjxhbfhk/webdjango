@@ -71,17 +71,17 @@
             <div class="product-grid2">
                 <div class="product-image2">
                     <a href="{% url 'shop:product_detail' product.id %}">
-                        <img  src="{{ product.image.url }}" 
-                        alt="{{ product.name }}"  
-                        class="img-fluid"  
+                        <img  src="{{ product.image.url }}"
+                        alt="{{ product.name }}"
+                        class="img-fluid"
                         style="object-fit: cover; width: 100%; height: 200px;">
-                    
+
                     </a>
                     <ul class="social">
                         <li><a href="{% url 'shop:product_detail' product.id %}" data-tip="Quick View"><i class="fa fa-eye"></i></a></li>
                         <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
                         <li><a href="#" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-						
+
                     </ul>
                     <a class="add-to-cart" href=""> Thêm vào giỏ hàng </a>
                 </div>

@@ -168,6 +168,7 @@ def recomend(request):
 #     recommendations.sort(key=lambda x: x[1], reverse=True)  # Sort by predicted rating
 #     top_k_recommendations = recommendations[:k]
 
+
 #     # Retrieve recommended products
 #     recommended_product_ids = [rec[0] for rec in top_k_recommendations]
 #     recommended_products = Product.objects.filter(id__in=recommended_product_ids)
