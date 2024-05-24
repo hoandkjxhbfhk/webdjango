@@ -3,17 +3,6 @@ from shop.models import Product
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-# from sqlalchemy import create_engine
-# import pandas as pd
-
-# # Tạo đối tượng kết nối đến cơ sở dữ liệu MySQL
-# engine = create_engine('mysql+pymysql://root:@localhost/allbachelorshop')
-
-# # Sử dụng Pandas để đọc dữ liệu từ đối tượng kết nối
-# ds = pd.read_sql_query("SELECT * from shop_product", engine)
-
-# ds = Product.objects.all()
-
 
 def getFrames(ds):
     tf = TfidfVectorizer(analyzer="word", ngram_range=(1, 5), min_df=0, stop_words="english")
