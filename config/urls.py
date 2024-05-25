@@ -17,14 +17,18 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
-from django.views.generic import TemplateView
+from django.urls import include, path, reverse_lazy
+from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="index.html"), name="index"),
+    path(
+        "",
+        RedirectView.as_view(url=reverse_lazy("shop:index")),
+        name="home",
+    ),
     path("admin/", admin.site.urls),
     path("about/", TemplateView.as_view(template_name="about.html"), name="about"),
-    path("shop/", include(("shop.urls", "shop"), namespace="shop")),
+    path("shop/", include(("shop.urls"), namespace="shop")),
     path("profiles/", include("profiles.urls")),
     path("markdownx/", include("markdownx.urls")),
     path("order/", include("order.urls"), name="order"),

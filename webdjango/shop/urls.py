@@ -1,11 +1,13 @@
 from django.conf import settings
-from django.urls import include, path
+from django.urls import include, path, reverse_lazy
+from django.views.generic import RedirectView
 
 from . import views
 
 app_name = "shop"
 
 urlpatterns = [
+    path("", RedirectView.as_view(url=reverse_lazy("shop:index")), name="home"),
     path("signup/", views.signup, name="signup"),
     path("login/", views.user_login, name="login"),
     path("logout/", views.user_logout, name="logout"),
