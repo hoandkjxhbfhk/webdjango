@@ -25,7 +25,8 @@ License: MIT
 
 - Khởi tạo dữ liệu cho trang web : lệnh này cũng chỉ chạy 1 lần hoặc khi có sự thay đổi nào liên quan đến dữ liệu.
 
-      $ docker compose run --rm django python manage.py \ loaddata categories.json subcategories.json \
+      $ docker compose run --rm django python manage.py \
+      loaddata categories.json subcategories.json \
       fashions.json movies.json users2.json reviews2.json
 
 - Mở trình duyệt và truy cập vào địa chỉ  http://127.0.0.1:8000/ hoặc http://127.0.0.1:8000/admin để truy cập vào trang admin.
